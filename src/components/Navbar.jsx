@@ -6,6 +6,9 @@ import {
   Menu, X, LogOut, LayoutDashboard, User,
   Linkedin, Instagram, Mail, ShoppingCart, Search
 } from 'lucide-react';
+import bpoLogo from "../assets/cropped-BPO-logo-e1750057560274 (1).webp";
+
+ 
 
 const Navbar = () => {
   const { user, logout } = useAuth();
@@ -19,6 +22,11 @@ const Navbar = () => {
   const isActive = (path) => location.pathname === path;
 
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
+
+  const handleNavLinkClick = () => {
+    setMobileMenuOpen(false);
+    window.scrollTo(0, 0);
+  };
 
   const handleLogout = async () => {
     await logout();
@@ -46,7 +54,7 @@ const Navbar = () => {
             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LinkedIn">
               <Linkedin size={17} />
             </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Instagram">
+            <a href="https://www.instagram.com/bpoautoaccept?igsh=aXhic3h5N3NkdTQ4" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Instagram">
               <Instagram size={17} />
             </a>
             <a href="mailto:info@bpoautoaccept.com" className="social-icon" aria-label="Email">
@@ -79,17 +87,18 @@ const Navbar = () => {
         <div className="container nav-wrapper">
           {/* Logo */}
           <Link to="/" className="nav-logo" onClick={() => setMobileMenuOpen(false)}>
-            <div className="logo-icon">
+            {/* <div className="logo-icon">
               <svg viewBox="0 0 48 48" width="42" height="42" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M24 4L4 20h6v20h10V30h8v10h10V20h6L24 4z" fill="var(--primary)" stroke="var(--text-bright)" strokeWidth="1.5"/>
                 <rect x="18" y="16" width="5" height="6" rx="1" fill="var(--text-bright)" opacity="0.85"/>
                 <rect x="25" y="16" width="5" height="6" rx="1" fill="var(--text-bright)" opacity="0.85"/>
               </svg>
-            </div>
-            <div className="logo-text">
+            </div> */}
+            {/* <div className="logo-text">
               <span className="logo-bpo">BPO</span>
               <span className="logo-acceptor">Acceptor</span>
-            </div>
+            </div> */}
+             <img src={bpoLogo} alt="BPO Auto logo" style={{ filter: 'brightness(1.3) contrast(1.1)' }} />
           </Link>
 
           {/* Desktop Navigation Links */}
@@ -99,6 +108,7 @@ const Navbar = () => {
                 <Link
                   to={link.path}
                   className={`nav-link ${isActive(link.path) ? 'active' : ''}`}
+                  onClick={handleNavLinkClick}
                 >
                   {link.label}
                 </Link>
@@ -156,7 +166,7 @@ const Navbar = () => {
               key={link.path}
               to={link.path}
               className={`mobile-menu-link ${isActive(link.path) ? 'active' : ''}`}
-              onClick={toggleMobileMenu}
+              onClick={handleNavLinkClick}
             >
               {link.label}
             </Link>

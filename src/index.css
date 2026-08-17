@@ -584,6 +584,7 @@ a:hover {
   background: rgba(4, 146, 194, 0.1);
   border: 1px solid rgba(4, 146, 194, 0.3);
   border-radius: 999px;
+  justify-content: center;
   color: var(--primary);
   font-weight: 600;
   font-size: 0.85rem;

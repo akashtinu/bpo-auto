@@ -117,6 +117,15 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-wrapper">
+      {/* Toast */}
+      {msg.text && (
+        <div style={{ position: 'fixed', top: '1.5rem', right: '1.5rem', zIndex: 9999, padding: '1rem 1.5rem', borderRadius: '10px', background: msg.type === 'success' ? 'rgba(16,185,129,0.15)' : 'rgba(239,68,68,0.15)', border: `1px solid ${msg.type === 'success' ? 'rgba(16,185,129,0.4)' : 'rgba(239,68,68,0.4)'}`, color: msg.type === 'success' ? 'var(--success)' : 'var(--danger)', display: 'flex', alignItems: 'center', gap: '0.75rem', backdropFilter: 'blur(12px)', boxShadow: '0 8px 32px rgba(0,0,0,0.3)', maxWidth: '380px' }}>
+          {msg.type === 'success' ? <CheckCircle size={18} /> : <AlertCircle size={18} />}
+          <span style={{ fontSize: '0.9rem' }}>{msg.text}</span>
+          <button onClick={() => setMsg({ type: '', text: '' })} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', marginLeft: 'auto' }}><X size={16} /></button>
+        </div>
+      )}
+
       {/* Sidebar */}
       <aside className="sidebar">
         <div style={{ marginBottom: '2rem', paddingLeft: '1rem' }}>
@@ -145,14 +154,6 @@ const Dashboard = () => {
 
       {/* Main Content */}
       <main className="dashboard-content">
-        {/* Toast */}
-        {msg.text && (
-          <div style={{ position: 'fixed', top: '1.5rem', right: '1.5rem', zIndex: 999, padding: '1rem 1.5rem', borderRadius: '10px', background: msg.type === 'success' ? 'rgba(16,185,129,0.15)' : 'rgba(239,68,68,0.15)', border: `1px solid ${msg.type === 'success' ? 'rgba(16,185,129,0.4)' : 'rgba(239,68,68,0.4)'}`, color: msg.type === 'success' ? 'var(--success)' : 'var(--danger)', display: 'flex', alignItems: 'center', gap: '0.75rem', backdropFilter: 'blur(12px)', boxShadow: '0 8px 32px rgba(0,0,0,0.3)', maxWidth: '380px' }}>
-            {msg.type === 'success' ? <CheckCircle size={18} /> : <AlertCircle size={18} />}
-            <span style={{ fontSize: '0.9rem' }}>{msg.text}</span>
-            <button onClick={() => setMsg({ type: '', text: '' })} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', marginLeft: 'auto' }}><X size={16} /></button>
-          </div>
-        )}
 
         {/* Overview Tab */}
         {activeTab === 'overview' && (

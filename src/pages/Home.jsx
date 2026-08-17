@@ -5,6 +5,14 @@ import {
   HelpCircle, Star, Sparkles, Send, Lock, Eye, AlertCircle, PlayCircle
 } from 'lucide-react';
 import { api } from '../utils/api';
+import bpoLogo from "../assets/cropped-BPO-logo-e1750057560274 (1).webp";
+import rrrImage from '../assets/RRR-300x300-1.webp';
+import classValuationImage from '../assets/Class-Valuation-300x300-1.webp';
+import clearCapitalImage from '../assets/clear-captial-300x300-1.webp';
+import estreetImage from '../assets/estreet-300x300-1.webp';
+import proteckImage from '../assets/proteck-300x300-ezgif.com-png-to-webp-converter.webp';
+import singleSourceImage from '../assets/single-source.webp';
+import xomeImage from '../assets/xome-300x300-1.webp';
 
 const Home = () => {
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
@@ -34,10 +42,20 @@ const Home = () => {
   };
 
   const portalList = [
-    'Estreet', 'Homegenius', 'LRES', 'RRR', 'Class Valuation',
-    'Opteon', 'Groundworks', 'Asset Valuation', 'Consolidated',
-    'Voxtur', 'Xome', 'Clear Capital', 'Solidifi', 'Proteck'
+    'Clear Capital', 'Estreet', 'Proteck', 'Xome', 'RRR',
+    
+    'Single Source', 'Class Valuation'
   ];
+
+  const portalImages = {
+    'Estreet': estreetImage,
+    'RRR': rrrImage,
+    'Class Valuation': classValuationImage,
+    'Clear Capital': clearCapitalImage,
+    'Proteck': proteckImage,
+    'Xome': xomeImage,
+    'Single Source': singleSourceImage
+  };
 
   return (
     <div style={{ paddingBottom: '5rem' }}>
@@ -47,8 +65,13 @@ const Home = () => {
         <div className="hero-grid-two">
           
           {/* Left: Text Content */}
+          
           <div style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <span className="badge badge-warning" style={{ fontSize: '0.8rem', padding: '0.35rem 0.75rem', marginBottom: '0.5rem' ,display: 'flex',justifyContent: 'center', alignItems: 'center',borderRadius: '999px'}}>
+                Starting at $3 per order
+              </span>
             <div className="hero-badge">
+              
               <Zap size={14} style={{ marginRight: '4px' }} /> One solution for BPO order capture
             </div>
             <h1 className="hero-title" style={{ fontSize: '3.2rem', marginBottom: '1rem', lineHeight: 1.1 }}>
@@ -57,6 +80,7 @@ const Home = () => {
             <p className="hero-subtitle" style={{ fontSize: '1.2rem', margin: '0 0 2rem 0', color: 'var(--text-main)', lineHeight: 1.6 }}>
               Streamline your business with expert Auto Acceptance BPO services. Fast, reliable, and cost-effective outsourcing solutions tailored for you.
             </p>
+            
             
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '2rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
@@ -82,9 +106,9 @@ const Home = () => {
           {/* Right: Enquiry Form */}
           <div className="glass-panel" style={{ padding: '2rem', border: '1px solid var(--border-color-hover)', background: 'rgba(16, 29, 47, 0.65)' }}>
             <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
-              <span className="badge badge-warning" style={{ fontSize: '0.8rem', padding: '0.35rem 0.75rem', marginBottom: '0.5rem' }}>
+              {/* <span className="badge badge-warning" style={{ fontSize: '0.8rem', padding: '0.35rem 0.75rem', marginBottom: '0.5rem' }}>
                 Starting at $3 per order
-              </span>
+              </span> */}
               <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: 'var(--text-bright)' }}>Enquire Here</h3>
               <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
                 Fill in your details and our team will reach out within 24 hours.
@@ -340,8 +364,19 @@ const Home = () => {
         <div className="portals-grid">
           {portalList.map(portal => (
             <div key={portal} className="portal-item">
-              <div className="portal-logo-mock" style={{ fontSize: '1.15rem' }}>{portal}</div>
-              <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>Auto Accept Ready</p>
+              {portalImages[portal] ? (
+                <div style={{ width: '100%', height: '200px', borderRadius: '8px', overflow: 'hidden', background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border-color)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '0.75rem' }}>
+                  <img 
+                    src={portalImages[portal]} 
+                    alt={portal} 
+                    style={{ width: '100%', height: '100%', objectFit: 'contain', padding: '1rem' }}
+                  />
+                </div>
+              ) : (
+                <div className="portal-logo-mock" style={{ fontSize: '1.15rem', marginBottom: '0.75rem' }}>{portal}</div>
+              )}
+              <h4 style={{ fontSize: '0.95rem', fontWeight: 600, margin: '0 0 0.35rem 0', color: 'var(--text-bright)' }}>{portal}</h4>
+              <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', margin: 0 }}>Auto Accept Ready</p>
             </div>
           ))}
         </div>

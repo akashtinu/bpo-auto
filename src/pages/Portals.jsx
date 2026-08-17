@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Search } from 'lucide-react';
 
 const ALL_PORTALS = [
-  { name: 'Voxtur', type: 'BPO & Appraisal', status: 'active' },
+  { name: 'Voxtur', type: 'BPO & Appraisal', status: 'active'  },
   { name: 'Xome', type: 'BPO', status: 'active' },
   { name: 'Clear Capital', type: 'BPO & Valuation', status: 'active' },
   { name: 'Solidifi', type: 'BPO & Appraisal', status: 'active' },

@@ -9,6 +9,7 @@ export const api = {
 
     const config = {
       ...options,
+      credentials: 'include',
       headers: {
         ...defaultHeaders,
         ...options.headers,
