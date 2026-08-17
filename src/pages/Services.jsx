@@ -7,7 +7,7 @@ import {
 
 const Services = () => {
   return (
-    <div style={{ paddingBottom: '5rem' }}>
+    <div className="services-page" style={{ paddingBottom: '5rem' }}>
       
       {/* ─── Hero Section ─── */}
       <section className="hero-section container" style={{ paddingBottom: '2.5rem' }}>
@@ -24,7 +24,7 @@ const Services = () => {
 
       {/* ─── Service Overview Grid ─── */}
       <section className="container" style={{ marginBottom: '5rem' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
+        <div className="services-overview" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', fontSize: '1.02rem', lineHeight: 1.8, color: 'var(--text-main)' }}>
             <p>
               Powered by our advanced BPO Auto Acceptance Software, the system continuously monitors vendor portals in real time and automatically captures eligible BPO and appraisal orders based on your customized preferences. By eliminating manual refreshing and reducing response times, our intelligent BPO automation solution helps you stay ahead of the competition while improving your BPO order acceptance rate.
@@ -51,7 +51,7 @@ const Services = () => {
 
       {/* ─── Why Choose Our BPO Order Acceptance Service? ─── */}
       <section className="container" style={{ marginBottom: '5rem' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'start' }}>
+        <div className="services-why" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'start' }}>
           
           {/* List of points */}
           <div>
@@ -101,7 +101,7 @@ const Services = () => {
             Maximize your BPO order acceptance rate with our intelligent BPO Auto Acceptance Software. Our cloud-based automation continuously monitors vendor portals, instantly captures eligible Broker Price Opinion (BPO) and appraisal orders, and helps real estate professionals secure more assignments with speed, accuracy, and reliability.
           </p>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem', textAlign: 'left' }}>
+          <div className="services-feature-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem', textAlign: 'left' }}>
             {[
               { num: '01', title: 'Intelligent Order Filtering', desc: 'Accept only the BPO and appraisal orders that match your preferred vendors, locations, fees, and property types.' },
               { num: '02', title: 'Instant Order Capture', desc: 'Real-time monitoring and automated acceptance help you secure more assignments before the competition.' },
@@ -121,7 +121,7 @@ const Services = () => {
 
       {/* ─── BPO Appraisal Deep Dive ─── */}
       <section className="container" style={{ marginBottom: '5rem' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '3rem', alignItems: 'start' }}>
+        <div className="services-deep-dive" style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '3rem', alignItems: 'start' }}>
           
           {/* Left: Explanation */}
           <div>
@@ -180,7 +180,7 @@ const Services = () => {
             { title: 'Grow Your Business with Confidence', desc: 'Our secure, cloud-based BPO automation platform works 24/7 to help you increase order acceptance rates, improve productivity, maximize earnings, and stay competitive in the fast-paced BPO and appraisal industry.' }
           ].map((item, idx) => (
             <div key={item.title} className="glass-card" style={{ display: 'flex', gap: '1.25rem', alignItems: 'flex-start' }}>
-              <div style={{ background: 'rgba(4,146,194,0.1)', color: 'var(--primary)', width: '32px', height: '32px', borderRadius: '8px', display: 'flex', alignItems: 'center', justify: 'center', fontWeight: 'bold', fontSize: '0.9rem', flexShrink: 0 }}>
+              <div style={{ background: 'rgba(4,146,194,0.1)', color: 'var(--primary)', width: '32px', height: '32px', borderRadius: '8px', display: 'flex', alignItems: 'center',justifyContent:"center", justify: 'center', fontWeight: 'bold', fontSize: '0.9rem', flexShrink: 0 }}>
                 {idx + 1}
               </div>
               <div>

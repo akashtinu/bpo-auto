@@ -29,14 +29,14 @@ const Cart = () => {
   }
 
   return (
-    <div style={{ paddingBottom: '5rem', minHeight: '80vh' }}>
+    <div className="cart-page" style={{ paddingBottom: '5rem', minHeight: '80vh' }}>
       <section className="hero-section container" style={{ paddingBottom: '2rem' }}>
         <h1 className="hero-title" style={{ fontSize: '3rem' }}>Your Cart</h1>
         <p className="hero-subtitle">{cartCount} {cartCount === 1 ? 'item' : 'items'} in your cart</p>
       </section>
 
       <section className="container">
-        <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '3rem', alignItems: 'start' }}>
+        <div className="cart-layout" style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '3rem', alignItems: 'start' }}>
           
           {/* Cart Items */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>

@@ -59,6 +59,74 @@
     font-size: 0.85rem;
     padding: 0.6rem 0.8rem;
   }
+
+  .about-page {
+    width: 100%;
+  }
+
+  .about-page .about-main-grid,
+  .about-page .about-feature-grid,
+  .about-page .about-process-grid,
+  .about-page .about-side-stack {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 1.5rem !important;
+  }
+
+  .about-page .about-side-stack {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .about-page .glass-panel,
+  .about-page .glass-card,
+  .about-page .about-main-grid > div,
+  .about-page .about-feature-grid > div,
+  .about-page .about-process-grid > div,
+  .about-page .about-side-stack > div {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .cart-page .cart-layout,
+  .services-page .services-overview,
+  .services-page .services-why,
+  .services-page .services-feature-grid,
+  .services-page .services-deep-dive,
+  .contact-page .contact-layout {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 1.5rem !important;
+  }
+
+  .cart-page .cart-layout > div,
+  .services-page .services-overview > div,
+  .services-page .services-why > div,
+  .services-page .services-feature-grid > div,
+  .services-page .services-deep-dive > div,
+  .contact-page .contact-layout > div,
+  .cart-page .glass-panel,
+  .services-page .glass-panel,
+  .services-page .glass-card,
+  .contact-page .glass-panel {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .cart-page .glass-panel[style*="position: sticky"],
+  .contact-page .glass-panel[style*="position: sticky"] {
+    position: static !important;
+  }
+
+  .about-page .hero-title {
+    font-size: 2.2rem !important;
+  }
 }
 
 /* Select dropdown styling */

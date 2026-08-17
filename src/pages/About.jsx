@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Shield, Target, Award, Users, Cpu, FileText, CheckCircle, Zap } from 'lucide-react';
-
+import '../index.css';
 const About = () => {
   return (
-    <div style={{ paddingBottom: '5rem' }}>
+    <div className="about-page" style={{ paddingBottom: '5rem' }}>
       
       {/* ─── Hero Section ─── */}
       <section className="hero-section container" style={{ paddingBottom: '2rem' }}>
@@ -21,7 +21,7 @@ const About = () => {
 
       {/* ─── Mission & Intro Grid ─── */}
       <section className="container" style={{ marginBottom: '5rem' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '3rem', alignItems: 'start' }}>
+        <div className="about-main-grid" style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '3rem', alignItems: 'start' }}>
           
           {/* Left: Mission & Details */}
           <div>
@@ -62,7 +62,7 @@ const About = () => {
           </div>
 
           {/* Right: Counter Stats & Side Details */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+          <div className="about-side-stack" style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             
             {/* Stats Panel */}
             <div className="glass-panel" style={{ padding: '2rem', textAlign: 'center' }}>
@@ -112,7 +112,7 @@ const About = () => {
 
       {/* ─── Who We Are & What We Do ─── */}
       <section className="container" style={{ marginBottom: '5rem' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2.5rem' }}>
+        <div className="about-feature-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2.5rem' }}>
           
           {/* Who We Are */}
           <div className="glass-card">
@@ -149,7 +149,7 @@ const About = () => {
 
       {/* ─── How it Works & Why Choose Us (Double Grid) ─── */}
       <section className="container" style={{ marginBottom: '4rem' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2.5rem', alignItems: 'start' }}>
+        <div className="about-process-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2.5rem', alignItems: 'start' }}>
           
           {/* How Our Software Works */}
           <div className="glass-card" style={{ height: '100%' }}>
@@ -164,7 +164,7 @@ const About = () => {
                 'Reduces manual effort, improves productivity, and helps maximize your earning potential.'
               ].map((item, idx) => (
                 <div key={idx} style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-                  <div style={{ background: 'var(--secondary)', color: 'var(--primary)', width: '24px', height: '24px', borderRadius: '50%', display: 'flex', alignItems: 'center', justify: 'center', fontWeight: 'bold', fontSize: '0.85rem', flexShrink: 0 }}>
+                  <div style={{ background: 'var(--secondary)', color: 'var(--primary)', width: '24px', height: '24px', borderRadius: '50%', display: 'flex', alignItems: 'center',justifyContent:"center", justify: 'center', fontWeight: 'bold', fontSize: '0.85rem', flexShrink: 0 }}>
                     {idx + 1}
                   </div>
                   <p style={{ fontSize: '0.92rem', lineHeight: 1.6, margin: 0 }}>{item}</p>

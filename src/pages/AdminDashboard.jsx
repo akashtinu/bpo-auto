@@ -126,11 +126,11 @@ const AdminDashboard = () => {
           </button>
         ))}
 
-        <div style={{ marginTop: 'auto', paddingTop: '2rem', borderTop: '1px solid var(--border-color)' }}>
+        {/* <div style={{ marginTop: 'auto', paddingTop: '2rem', borderTop: '1px solid var(--border-color)' }}>
           <button onClick={handleLogout} className="sidebar-link" style={{ width: '100%', border: 'none', cursor: 'pointer', background: 'none', fontFamily: 'inherit', textAlign: 'left', color: 'var(--danger)' }}>
             <LogOut size={18} /> Logout
           </button>
-        </div>
+        </div> */}
       </aside>
 
       {/* Main Content */}

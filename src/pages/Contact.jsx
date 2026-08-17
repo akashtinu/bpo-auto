@@ -26,7 +26,7 @@ const Contact = () => {
   };
 
   return (
-    <div style={{ paddingBottom: '5rem' }}>
+    <div className="contact-page" style={{ paddingBottom: '5rem' }}>
       {/* Hero */}
       <section className="hero-section container" style={{ paddingBottom: '3rem' }}>
         <h1 className="hero-title" style={{ fontSize: '3rem' }}>Contact BPO Auto Accept</h1>
@@ -36,8 +36,59 @@ const Contact = () => {
       </section>
 
       <section className="container" style={{ marginBottom: '4rem' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '4rem', alignItems: 'start' }}>
+        <div className="contact-layout" style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '4rem', alignItems: 'start' }}>
           
+          {/* Contact Form */}
+          <div className="contact-form-column glass-panel" style={{ padding: '2.5rem', position: 'sticky', top: '100px' }}>
+            {success ? (
+              <div style={{ textAlign: 'center', padding: '2rem' }}>
+                <CheckCircle size={56} style={{ color: 'var(--success)', marginBottom: '1.25rem', margin: '0 auto' }} />
+                <h3 style={{ marginBottom: '0.75rem' }}>Message Sent!</h3>
+                <p style={{ color: 'var(--text-muted)', marginBottom: '1.5rem' }}>
+                  Thank you for reaching out. We'll respond to your inquiry within one business day.
+                </p>
+                <button className="btn btn-secondary" onClick={() => setSuccess(false)}>Send Another Message</button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit}>
+                <h3 style={{ marginBottom: '0.5rem', fontSize: '1.75rem' }}>Enquire us</h3>
+                <p style={{ color: 'var(--text-muted)', marginBottom: '2rem' }}>To get start</p>
+
+                {error && (
+                  <div style={{ background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.3)', borderRadius: '8px', padding: '0.85rem 1rem', marginBottom: '1.25rem', color: 'var(--danger)', fontSize: '0.9rem' }}>
+                    {error}
+                  </div>
+                )}
+
+                <div className="form-group">
+                  <input id="contact-name" name="name" className="form-input" type="text" placeholder="Enter your name" value={form.name} onChange={handleChange} required />
+                </div>
+                
+                <div className="form-group">
+                  <input id="contact-email" name="email" className="form-input" type="email" placeholder="Email" value={form.email} onChange={handleChange} required />
+                </div>
+
+                <div className="form-group">
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    className="form-input"
+                    placeholder="Your Message"
+                    value={form.message}
+                    onChange={handleChange}
+                    required
+                    rows={6}
+                    style={{ resize: 'vertical', minHeight: '140px' }}
+                  />
+                </div>
+
+                <button type="submit" className="btn btn-primary" disabled={loading} style={{ width: '100%', justifyContent: 'center', padding: '1rem', fontSize: '1.1rem' }}>
+                  {loading ? 'Sending...' : <><Send size={18} /> Send Message</>}
+                </button>
+              </form>
+            )}
+          </div>
+
           {/* Content Block */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', color: 'var(--text-muted)', lineHeight: '1.8' }}>
             <div>
@@ -104,69 +155,8 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Contact Form */}
-          <div className="glass-panel" style={{ padding: '2.5rem', position: 'sticky', top: '100px' }}>
-            {success ? (
-              <div style={{ textAlign: 'center', padding: '2rem' }}>
-                <CheckCircle size={56} style={{ color: 'var(--success)', marginBottom: '1.25rem', margin: '0 auto' }} />
-                <h3 style={{ marginBottom: '0.75rem' }}>Message Sent!</h3>
-                <p style={{ color: 'var(--text-muted)', marginBottom: '1.5rem' }}>
-                  Thank you for reaching out. We'll respond to your inquiry within one business day.
-                </p>
-                <button className="btn btn-secondary" onClick={() => setSuccess(false)}>Send Another Message</button>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit}>
-                <h3 style={{ marginBottom: '0.5rem', fontSize: '1.75rem' }}>Enquire us</h3>
-                <p style={{ color: 'var(--text-muted)', marginBottom: '2rem' }}>To get start</p>
-
-                {error && (
-                  <div style={{ background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.3)', borderRadius: '8px', padding: '0.85rem 1rem', marginBottom: '1.25rem', color: 'var(--danger)', fontSize: '0.9rem' }}>
-                    {error}
-                  </div>
-                )}
-
-                <div className="form-group">
-                  <input id="contact-name" name="name" className="form-input" type="text" placeholder="Enter your name" value={form.name} onChange={handleChange} required />
-                </div>
-                
-                <div className="form-group">
-                  <input id="contact-email" name="email" className="form-input" type="email" placeholder="Email" value={form.email} onChange={handleChange} required />
-                </div>
-
-                <div className="form-group">
-                  <textarea
-                    id="contact-message"
-                    name="message"
-                    className="form-input"
-                    placeholder="Your Message"
-                    value={form.message}
-                    onChange={handleChange}
-                    required
-                    rows={6}
-                    style={{ resize: 'vertical', minHeight: '140px' }}
-                  />
-                </div>
-
-                <button type="submit" className="btn btn-primary" disabled={loading} style={{ width: '100%', justifyContent: 'center', padding: '1rem', fontSize: '1.1rem' }}>
-                  {loading ? 'Sending...' : <><Send size={18} /> Send Message</>}
-                </button>
-              </form>
-            )}
-          </div>
         </div>
       </section>
-
-      <style>{`
-        @media (max-width: 992px) {
-          section .container > div[style*="grid-template-columns: 1.2fr 1fr"] {
-            grid-template-columns: 1fr !important;
-          }
-          section .container > div > div:last-child {
-            position: static !important;
-          }
-        }
-      `}</style>
     </div>
   );
 };
