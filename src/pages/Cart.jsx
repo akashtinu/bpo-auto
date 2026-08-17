@@ -74,7 +74,7 @@ const Cart = () => {
                       onClick={() => removeFromCart(item.id)}
                       style={{ background: 'transparent', border: 'none', color: 'var(--danger)', display: 'flex', alignItems: 'center', gap: '0.25rem', cursor: 'pointer', fontSize: '0.9rem' }}
                     >
-                      <Trash2 size={16} /> Remove
+                       <Trash2 size={16} />  
                     </button>
                   </div>
                 </div>

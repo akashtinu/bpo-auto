@@ -122,13 +122,13 @@ const Navbar = () => {
               <ShoppingCart size={20} />
               {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
             </Link>
-            <button
+            {/* <button
               className="nav-action-icon"
               onClick={() => setShowSearch(!showSearch)}
               aria-label="Search"
             >
               <Search size={20} />
-            </button>
+            </button> */}
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -138,7 +138,7 @@ const Navbar = () => {
         </div>
 
         {/* Search Bar Dropdown */}
-        {showSearch && (
+        {/* {showSearch && (
           <div className="search-dropdown">
             <div className="container" style={{ display: 'flex', gap: '0.75rem' }}>
               <input
@@ -155,7 +155,7 @@ const Navbar = () => {
               </button>
             </div>
           </div>
-        )}
+        )} */}
       </nav>
 
       {/* ─── Mobile Menu ─── */}
@@ -179,6 +179,8 @@ const Navbar = () => {
             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon"><Linkedin size={18} /></a>
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon"><Instagram size={18} /></a>
             <a href="mailto:info@bpoautoaccept.com" className="social-icon"><Mail size={18} /></a>
+            <a href="/cart" className="social-icon"><ShoppingCart size={18} /> </a>
+            
           </div>
 
           <hr style={{ border: 'none', borderTop: '1px solid var(--border-color)', margin: '0.5rem 0' }} />

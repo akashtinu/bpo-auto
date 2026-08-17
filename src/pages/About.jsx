@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Shield, Target, Award, Users, Cpu, FileText, CheckCircle, Zap } from 'lucide-react';
 import '../index.css';
+import office from '../assets/Image-7.webp';
+
 const About = () => {
   return (
     <div className="about-page" style={{ paddingBottom: '5rem' }}>
@@ -21,18 +23,11 @@ const About = () => {
 
       {/* ─── Mission & Intro Grid ─── */}
       <section className="container" style={{ marginBottom: '5rem' }}>
-        <div className="about-main-grid" style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '3rem', alignItems: 'start' }}>
+        <div className="about-main-grid" style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '3rem', alignItems: 'center' }}>
           
           {/* Left: Mission & Details */}
           <div>
-            <div className="glass-panel" style={{ padding: '2rem', borderLeft: '4px solid var(--primary)', background: 'rgba(4,146,194,0.04)', marginBottom: '2.5rem' }}>
-              <h3 style={{ color: 'var(--text-bright)', marginBottom: '0.75rem', fontSize: '1.25rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                Our Mission
-              </h3>
-              <p style={{ fontSize: '0.98rem', lineHeight: 1.7, color: 'var(--text-main)' }}>
-                Our mission is to provide industry-leading BPO Auto Accept Software that automates BPO and appraisal order acceptance with speed, accuracy, and reliability. By combining intelligent automation with real-time monitoring, we help professionals increase acceptance rates, improve productivity, and grow their business through efficient BPO order management.
-              </p>
-            </div>
+            
 
             <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--text-bright)' }}>About Us</h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', color: 'var(--text-main)', lineHeight: 1.8 }}>
@@ -62,10 +57,10 @@ const About = () => {
           </div>
 
           {/* Right: Counter Stats & Side Details */}
-          <div className="about-side-stack" style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+         <div className="about-side-stack" style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             
             {/* Stats Panel */}
-            <div className="glass-panel" style={{ padding: '2rem', textAlign: 'center' }}>
+            {/* <div className="glass-panel" style={{ padding: '2rem', textAlign: 'center' }}>
               <h4 style={{ marginBottom: '1.5rem', fontSize: '1.1rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Performance Metrics</h4>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
                 <div>
@@ -81,7 +76,19 @@ const About = () => {
                   <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginTop: '0.35rem' }}>Worth of Orders Captured ($)</div>
                 </div>
               </div>
+            </div> */}
+
+<div className="glass-panel" style={{ padding: '2rem', borderLeft: '4px solid var(--primary)', background: 'rgba(4,146,194,0.04)', marginBottom: '2.5rem' }}>
+              <h3 style={{ color: 'var(--text-bright)', marginBottom: '0.75rem', fontSize: '1.25rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                Our Mission
+              </h3>
+              <p style={{ fontSize: '0.98rem', lineHeight: 1.7, color: 'var(--text-main)' }}>
+                Our mission is to provide industry-leading BPO Auto Accept Software that automates BPO and appraisal order acceptance with speed, accuracy, and reliability. By combining intelligent automation with real-time monitoring, we help professionals increase acceptance rates, improve productivity, and grow their business through efficient BPO order management.
+              </p>
             </div>
+
+
+            <img src={office} alt="" />
 
             {/* Quick Who-We-Are Summary Box */}
             <div className="glass-card" style={{ borderColor: 'rgba(4, 146, 194, 0.25)' }}>
@@ -106,9 +113,27 @@ const About = () => {
             </div>
 
           </div>
+        
 
         </div>
       </section>
+        <div className="glass-panel about-metrics" style={{ padding: '2rem', textAlign: 'center' }}>
+          <h4 style={{ marginBottom: '1.5rem', fontSize: '1.1rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Performance Metrics</h4>
+          <div className="about-metrics-grid" style={{ display: 'flex', justifyContent: 'space-between', gap: '2rem', flexWrap: 'wrap' }}>
+            <div className="about-metric" style={{ flex: '1 1 180px', minWidth: '120px', padding: '1rem 0.5rem', borderRight: '1px solid var(--border-color)' }}>
+              <div style={{ fontSize: '3rem', fontWeight: 900, color: 'var(--primary)', lineHeight: 1 }}>2 +</div>
+              <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginTop: '0.35rem' }}>Years Experience</div>
+            </div>
+            <div className="about-metric" style={{ flex: '1 1 180px', minWidth: '120px', padding: '1rem 0.5rem', borderRight: '1px solid var(--border-color)' }}>
+              <div style={{ fontSize: '3rem', fontWeight: 900, color: 'var(--primary)', lineHeight: 1 }}>15 +</div>
+              <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginTop: '0.35rem' }}>Clients Across US</div>
+            </div>
+            <div className="about-metric" style={{ flex: '1 1 180px', minWidth: '120px', padding: '1rem 0.5rem' }}>
+              <div style={{ fontSize: '3rem', fontWeight: 900, color: 'var(--primary)', lineHeight: 1 }}>150 k+</div>
+              <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginTop: '0.35rem' }}>Worth of Orders Captured ($)</div>
+            </div>
+          </div>
+        </div>
 
       {/* ─── Who We Are & What We Do ─── */}
       <section className="container" style={{ marginBottom: '5rem' }}>
