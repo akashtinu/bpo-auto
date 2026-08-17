@@ -567,6 +567,11 @@ a:hover {
     width: 34px;
     height: 34px;
   }
+  .top-bar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
 }
 
 
