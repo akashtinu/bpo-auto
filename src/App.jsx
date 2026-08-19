@@ -17,6 +17,8 @@ import Pricing from './pages/Pricing';
 import FAQ from './pages/FAQ';
 import Contact from './pages/Contact';
 import Cart from './pages/Cart';
+import RefundPolicy from './pages/RefundPolicy';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 
 // Auth Pages
 import Login from './pages/Login';
@@ -65,6 +67,9 @@ function App() {
             <Route path="/faq" element={<PublicLayout><FAQ /></PublicLayout>} />
             <Route path="/contact" element={<PublicLayout><Contact /></PublicLayout>} />
             <Route path="/cart" element={<PublicLayout><Cart /></PublicLayout>} />
+            <Route path="/refund-policy" element={<PublicLayout><RefundPolicy /></PublicLayout>} />
+                        <Route path="/privacy-policy" element={<PublicLayout><PrivacyPolicy /></PublicLayout>} />
+
 
             {/* ── Guest-only Routes (redirect if already logged in) ── */}
             <Route path="/login" element={<GuestRoute><PublicLayout><Login /></PublicLayout></GuestRoute>} />

@@ -282,6 +282,11 @@ a:hover {
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+.mobile-cart-icon {
+  position: relative;
+  background: orange;
+}
+
 .social-icon:hover {
   background: rgba(255, 255, 255, 0.3);
   color: #fff;
@@ -505,6 +510,17 @@ a:hover {
   padding: 0.5rem;
 }
 
+.mobile-cart-action {
+  display: none;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: var(--text-main);
+  text-decoration: none;
+}
+
 /* Mobile Menu */
 .mobile-menu {
   display: none;
@@ -544,6 +560,11 @@ a:hover {
     display: flex;
     align-items: center;
   }
+  .mobile-cart-action {
+    display: inline-flex;
+    margin-left: auto;
+    margin-right: 0.25rem;
+  }
   .mobile-menu {
     display: flex;
   }
@@ -582,10 +603,20 @@ a:hover {
    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
 } */
-    
+    .mobile-cart{
+      display:flex;
+     
+    }
+    /* .mobile-cart{
+      display:flex;
+    } */
 }
-
-
+/* .mobile-cart{
+display: none;
+ align-items: 'center';
+  gap: '0.5rem';
+   opacity: 0.95 ;
+} */
 /* Hero Section */
 .hero-section {
   padding: 6rem 0 4rem;

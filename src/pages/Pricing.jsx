@@ -140,16 +140,27 @@ const Pricing = () => {
               
               <div style={{ padding: '1.5rem', background: 'rgba(255,255,255,0.02)', border: '1px solid var(--border-color)', borderRadius: '0 0 12px 12px', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
                 <h3 style={{ fontSize: '1.1rem', marginBottom: '0.75rem', color: 'var(--text-main)', flexGrow: 1 }}>{product.name}</h3>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: 'auto' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: 'auto' ,justifyContent:'center'}}>
                   {product.sale && (
                     <span style={{ color: 'var(--text-muted)', textDecoration: 'line-through', fontSize: '0.9rem' }}>
                       ${product.originalPrice.toFixed(2)}
                     </span>
                   )}
-                  <span style={{ color: product.sale ? 'var(--primary)' : 'var(--text-main)', fontWeight: 'bold', fontSize: '1.2rem' }}>
+                  <span style={{ color: product.sale ? 'var(--primary)' : 'var(--text-main)', fontWeight: 'bold', fontSize: '1.2rem' ,textAlign:'center'}}>
                     ${product.price.toFixed(2)}
                   </span>
-                </div>
+ </div>
+                  <button 
+                    onClick={(e) => handleAddToCart(e, product)}
+                    className="mobile-cart"
+                    
+                  >
+                    <ShoppingCart size={18} />
+                    Add to cart
+                  </button>
+
+
+               
               </div>
             </div>
           ))}
@@ -183,6 +194,10 @@ const Pricing = () => {
           opacity: 1;
         }
 
+        .mobile-cart {
+          display: none;
+        }
+
         @media (max-width: 1200px) {
           .container > div {
             grid-template-columns: repeat(3, 1fr) !important;
@@ -198,6 +213,25 @@ const Pricing = () => {
         @media (max-width: 480px) {
           .container > div {
             grid-template-columns: 1fr !important;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .mobile-cart {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            margin-top: 1rem;
+            padding: 0.75rem 1rem;
+            border: 0;
+            border-radius: 6px;
+            background: var(--primary);
+            color: #fff;
+            font: inherit;
+            font-weight: 600;
+            cursor: pointer;
           }
         }
       `}</style>

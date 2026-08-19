@@ -131,6 +131,11 @@ const Navbar = () => {
             </button> */}
           </div>
 
+          <Link to="/cart" className="mobile-cart-action" aria-label="Cart">
+            <ShoppingCart size={20} />
+            {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+          </Link>
+
           {/* Mobile Menu Toggle */}
           <button onClick={toggleMobileMenu} className="mobile-toggle-btn" aria-label="Toggle menu">
             {mobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
@@ -179,7 +184,10 @@ const Navbar = () => {
             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon"><Linkedin size={18} /></a>
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon"><Instagram size={18} /></a>
             <a href="mailto:info@bpoautoaccept.com" className="social-icon"><Mail size={18} /></a>
-            <a href="/cart" className="social-icon"><ShoppingCart size={18} /> </a>
+            {/* <Link to="/cart" className="social-icon mobile-cart-icon" aria-label="Cart">
+              <ShoppingCart size={18} />
+              {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+            </Link> */}
             
           </div>
 
