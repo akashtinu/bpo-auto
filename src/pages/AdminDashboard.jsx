@@ -233,7 +233,7 @@ const AdminDashboard = () => {
               </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'start' }}>
+            <div className="simulate-order-layout" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'start' }}>
               <div className="glass-panel" style={{ padding: '2rem' }}>
                 <h3 style={{ marginBottom: '1.5rem' }}>Capture Settings</h3>
 
@@ -261,7 +261,7 @@ const AdminDashboard = () => {
                   onClick={handleSimulate}
                   className="btn btn-primary"
                   disabled={loading || !selectedUserId}
-                  style={{ width: '100%', justifyContent: 'center', padding: '0.9rem', fontSize: '1rem' }}
+                  style={{ width: '100%', justifyContent: 'center', padding: '0.9rem', fontSize: '1rem', whiteSpace: 'normal', textAlign: 'center' }}
                 >
                   {loading ? 'Simulating...' : <><Play size={18} /> Simulate Order Capture</>}
                 </button>

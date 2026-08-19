@@ -1131,4 +1131,13 @@ display: none;
   .dashboard-content {
     padding: 1.5rem;
   }
+
+  .simulate-order-layout {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  .simulate-order-layout > * {
+    min-width: 0;
+  }
 }

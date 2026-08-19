@@ -89,7 +89,7 @@ const Footer = () => {
 
 
 
-<div className="contact-form-column glass-panel" style={{ padding: '2.5rem', position: 'sticky', top: '100px' }}>
+<div className="contact-form-column glass-panel" style={{ padding: '2.5rem', position: 'sticky', top: '100px' ,marginTop:'-40px'}}>
             {success ? (
               <div style={{ textAlign: 'center', padding: '2rem' }}>
                 <CheckCircle size={56} style={{ color: 'var(--success)', marginBottom: '1.25rem', margin: '0 auto' }} />
