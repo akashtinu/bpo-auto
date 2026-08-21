@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Shield, Target, Award, Users, Cpu, FileText, CheckCircle, Zap } from 'lucide-react';
 import '../index.css';
 import office from '../assets/Image-7.webp';
+import working from '../assets/working.jpg';
+import bulding from '../assets/bulting_big.jpg';
 
 const About = () => {
   return (
@@ -117,7 +119,7 @@ const About = () => {
 
         </div>
       </section>
-        <div className="glass-panel about-metrics" style={{ padding: '2rem', textAlign: 'center' }}>
+        <div className="glass-panel about-metrics" style={{ padding: '2rem', textAlign: 'center',marginBottom:'40px' }}>
           <h4 style={{ marginBottom: '1.5rem', fontSize: '1.1rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Performance Metrics</h4>
           <div className="about-metrics-grid" style={{ display: 'flex', justifyContent: 'space-between', gap: '2rem', flexWrap: 'wrap' }}>
             <div className="about-metric" style={{ flex: '1 1 180px', minWidth: '120px', padding: '1rem 0.5rem', borderRight: '1px solid var(--border-color)' }}>
@@ -150,7 +152,31 @@ const About = () => {
           </div>
 
           {/* What We Do */}
-          <div className="glass-card">
+          <div  style={{display:'flex',justifyContent:'center',alignItems:'center'}} >
+            
+          <img src={bulding}  alt="" className="aboutimage" />
+
+          </div>
+
+        </div>
+      </section>
+
+
+
+
+
+<section className="container" style={{ marginBottom: '5rem', }}>
+        <div className="about-feature-grid container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2.5rem' }}>
+          
+          {/* Who We Are */}
+          <div className='box1'  style={{display:'flex',justifyContent:'center',alignItems:'center'}} >
+            
+          <img src={working}  alt="" className="aboutimage" />
+
+          </div>
+
+          {/* What We Do */}
+          <div className="glass-card box2">
             <h3 style={{ fontSize: '1.4rem', marginBottom: '1rem', color: 'var(--text-bright)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <Cpu size={20} style={{ color: 'var(--primary)' }} /> What We Do
             </h3>
@@ -161,6 +187,13 @@ const About = () => {
 
         </div>
       </section>
+
+
+
+
+
+
+
 
       {/* ─── What is BPO Auto Acceptance? ─── */}
       <section className="container" style={{ marginBottom: '5rem' }}>

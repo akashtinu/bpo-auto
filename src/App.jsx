@@ -19,6 +19,7 @@ import Contact from './pages/Contact';
 import Cart from './pages/Cart';
 import RefundPolicy from './pages/RefundPolicy';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsConditions from './pages/TermsConditions'
 
 // Auth Pages
 import Login from './pages/Login';
@@ -27,6 +28,7 @@ import Register from './pages/Register';
 // Protected Pages
 import Dashboard from './pages/Dashboard';
 import AdminDashboard from './pages/AdminDashboard';
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
 import './App.css';
 
@@ -51,7 +53,18 @@ const DashboardLayout = ({ children }) => (
 
 function App() {
   return (
+
     <BrowserRouter>
+
+ 
+ <PayPalScriptProvider 
+      options={{ 
+        "client-id": "YOUR_PAYPAL_CLIENT_ID", // sandbox or live client ID
+        currency: "USD" 
+      }}
+    >
+
+
       <AuthProvider>
         <CartProvider>
           <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
@@ -68,7 +81,8 @@ function App() {
             <Route path="/contact" element={<PublicLayout><Contact /></PublicLayout>} />
             <Route path="/cart" element={<PublicLayout><Cart /></PublicLayout>} />
             <Route path="/refund-policy" element={<PublicLayout><RefundPolicy /></PublicLayout>} />
-                        <Route path="/privacy-policy" element={<PublicLayout><PrivacyPolicy /></PublicLayout>} />
+            <Route path="/privacy-policy" element={<PublicLayout><PrivacyPolicy /></PublicLayout>} />
+            <Route path="/terms-conditions" element={<PublicLayout><TermsConditions /></PublicLayout>} />
 
 
             {/* ── Guest-only Routes (redirect if already logged in) ── */}
@@ -116,8 +130,15 @@ function App() {
           </Routes>
           </div>
         </CartProvider>
+
+
+
       </AuthProvider>
+
+      </PayPalScriptProvider>
+
     </BrowserRouter>
+    
   );
 }
 

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CheckCircle, Send } from 'lucide-react';
 import { api } from '../utils/api';
+import logo from '../assets/cropped-BPO-logo-e1750057560274 (1).webp';
+
 
 const Footer = () => {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
@@ -39,6 +41,7 @@ const Footer = () => {
           
           {/* Column 1: Brand & Contact */}
           <div className="footer-column">
+            <img src={logo} alt="logo" />
             <h4 style={{ color: 'var(--text-bright)', marginBottom: '1.25rem', fontSize: '1.1rem', fontWeight: 700 }}>
               One Solution for BPO Order Capture
             </h4>
@@ -48,14 +51,12 @@ const Footer = () => {
             <h5 style={{ color: 'var(--text-bright)', marginBottom: '0.5rem', fontSize: '0.95rem' }}>Contact Us</h5>
             <ul className="footer-links">
               <li>
-                <a href="https://bpoautoaccept.com/" target="_blank" rel="noopener noreferrer">Website : www.bpoautoaccept.com</a>
+                <a href="https://autoacceptbpo.com/" target="_blank" rel="noopener noreferrer">Website : www.autoacceptbpo.com</a>
               </li>
               <li>
-                <a href="mailto:info@bpoautoaccept.com">Email : info@bpoautoaccept.com</a>
+                <a href="mailto:info@autoacceptbpo.com">Email : info@autoacceptbpo.com</a>
               </li>
-              <li>
-                <Link to="/faq">Terms and conditions</Link>
-              </li>
+              
             </ul>
           </div>
           
@@ -155,7 +156,9 @@ const Footer = () => {
         <div className="footer-bottom" style={{ borderTop: '1px solid var(--border-color)', paddingTop: '2rem', textAlign: 'center' }}>
           <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
             Copyright © 2025 <a href="https://bpoautoaccept.com/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)', fontWeight: 600 }}>BPO Auto Accept</a> All Rights Reserved.
+          <Link to="/terms-conditions" onClick={handleFooterLinkClick}>Terms & Conditions</Link>
           </p>
+          
           <p style={{ fontSize: '0.75rem', marginTop: '0.75rem', color: 'var(--text-muted)', lineHeight: 1.6, maxWidth: '800px', margin: '0.75rem auto 0' }}>
             Disclaimer: BPO Auto Accept is an independent BPO automation service. We are not sponsored by, associated with, or endorsed by Estreet, LRES, Homegenius, RRR, Clear Capital, Xome, or any other vendor platforms listed.
           </p>

@@ -610,7 +610,35 @@ a:hover {
     /* .mobile-cart{
       display:flex;
     } */
+     .aboutimage{
+     
+      width: 100%;
+     }
+
+     .box1 {
+  order: 2;
 }
+
+.box2 {
+  order: 1;
+}
+
+
+
+}
+.aboutimage{
+    width: 80%;
+    border-radius: 30px;
+  overflow: hidden;}
+
+/* .container {
+  display: flex;
+} */
+
+
+
+
+
 /* .mobile-cart{
 display: none;
  align-items: 'center';

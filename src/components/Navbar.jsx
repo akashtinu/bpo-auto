@@ -51,13 +51,13 @@ const Navbar = () => {
         <div className="container top-bar-inner">
           {/* Social Icons */}
           <div className="top-bar-socials">
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/company/bpo-auto-accept" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LinkedIn">
               <Linkedin size={17} />
             </a>
             <a href="https://www.instagram.com/bpoautoaccept?igsh=aXhic3h5N3NkdTQ4" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Instagram">
               <Instagram size={17} />
             </a>
-            <a href="mailto:info@bpoautoaccept.com" className="social-icon" aria-label="Email">
+            <a href="mailto:info@autoacceptbpo.com" className="social-icon" aria-label="Email">
               <Mail size={17} />
             </a>
           </div>
@@ -181,9 +181,9 @@ const Navbar = () => {
 
           {/* Mobile Social Icons */}
           <div style={{ display: 'flex', gap: '1rem', padding: '0.5rem 0' }}>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon"><Linkedin size={18} /></a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon"><Instagram size={18} /></a>
-            <a href="mailto:info@bpoautoaccept.com" className="social-icon"><Mail size={18} /></a>
+            <a href="https://www.linkedin.com/company/bpo-auto-accept" target="_blank" rel="noopener noreferrer" className="social-icon"><Linkedin size={18} /></a>
+            <a href="https://www.instagram.com/bpoautoaccept?igsh=aXhic3h5N3NkdTQ4" target="_blank" rel="noopener noreferrer" className="social-icon"><Instagram size={18} /></a>
+            <a href="mailto:info@autoacceptbpo.com" className="social-icon"><Mail size={18} /></a>
             {/* <Link to="/cart" className="social-icon mobile-cart-icon" aria-label="Cart">
               <ShoppingCart size={18} />
               {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}

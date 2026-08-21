@@ -110,6 +110,10 @@ const Home = () => {
                 Starting at $3 per order
               </span> */}
               <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: 'var(--text-bright)' }}>Enquire Here</h3>
+              
+              <p style={{ fontSize: '0.9rem', color: 'gray',marginBottom:'5px' }}>
+              To start with Estreet, Homegenius, LRES, RRR, Class Valuation, Opteon, Groundworks, Asset Valuation, Consolidated and more — Enquire here with your details
+              </p>
               <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
                 Fill in your details and our team will reach out within 24 hours.
               </p>

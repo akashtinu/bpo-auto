@@ -4,6 +4,11 @@ import {
   Zap, Filter, Shield, Award, CheckCircle, ArrowRight,
   TrendingUp, Clock, BookOpen, Layers, CheckSquare
 } from 'lucide-react';
+import sign from '../assets/house_sign.jpg';
+import handshack from '../assets/businessmen-shake-hands.jpg';
+import monitoring from '../assets/monitering-systom.jpg';
+import autoaccept from '../assets/auto-accept.png';
+
 
 const Services = () => {
   return (
@@ -20,6 +25,14 @@ const Services = () => {
         <p className="hero-subtitle" style={{ fontSize: '1.15rem', color: 'var(--text-main)', lineHeight: 1.6 }}>
           Looking for a smarter way to manage Broker Price Opinion (BPO) and appraisal orders? Our BPO Auto Acceptance Solutions are designed for real estate professionals, appraisers, brokers, lenders, and valuation companies who want to increase efficiency, secure more assignments, and maximize revenue.
         </p>
+
+         {/* <p  className="hero-subtitle" style={{ fontSize: '1.15rem', color: 'var(--text-main)', lineHeight: 1.6 }}>
+              Powered by our advanced BPO Auto Acceptance Software, the system continuously monitors vendor portals in real time and automatically captures eligible BPO and appraisal orders based on your customized preferences. By eliminating manual refreshing and reducing response times, our intelligent BPO automation solution helps you stay ahead of the competition while improving your BPO order acceptance rate.
+            </p>
+            <p  className="hero-subtitle" style={{ fontSize: '1.15rem', color: 'var(--text-main)', lineHeight: 1.6 }}>
+              Whether you manage a few assignments or hundreds each month, our cloud-based BPO order management platform delivers reliable, secure, and efficient automation to help your business grow.
+            </p>   */}
+
       </section>
 
       {/* ─── Service Overview Grid ─── */}
@@ -193,9 +206,76 @@ const Services = () => {
       </section>
 
       {/* ─── How BPO Appraisal Works / FAQ Link ─── */}
-      <section className="container" style={{ textAlign: 'center' }}>
+     
+
+      {/* ─── BPO Order Acceptance Workflow ─── */}
+      <section className="container" style={{ marginTop: '5rem' }}>
+        <div className="section-header">
+          <h2>How BPO Order Acceptance Works</h2>
+          <p>Set your preferences once and let our automation handle the rest.</p>
+        </div>
+
+        <div
+          className="services-process-grid"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+            gap: '1.5rem'
+          }}
+        >
+          {[
+            {
+              number: '01',
+              image:sign,
+              title: 'Set Your BPO Order Preferences',
+              description: 'Sign up and configure your preferences for order types, locations, and fees. Our BPO automation software captures only matching orders based on your criteria.'
+            },
+            {
+              number: '02',
+              image:handshack,
+              title: 'Connect BPO Order Portals',
+              description: 'Seamlessly connect your account with BPO platforms for real-time order monitoring, automated workflows, and faster order acceptance.'
+            },
+            {
+              number: '03',
+              image:monitoring,
+              title: 'Automated Order Monitoring',
+              description: 'Our system continuously monitors connected portals and detects new BPO orders instantly based on your selected requirements.'
+            },
+            {
+              number: '04',
+              image:autoaccept,
+              title: 'Auto Acceptance Software',
+              description: 'Matching BPO orders are automatically accepted within seconds, helping you secure opportunities faster without manual monitoring.'
+            }
+          ].map(step => (
+            <article key={step.number} className="glass-card" style={{ overflow: 'hidden', padding: 0 }}>
+              <img
+                src={step.image}
+                alt={step.title}
+                style={{ width: '100%', height: '170px', objectFit: 'cover', display: 'block' }}
+              />
+              <div style={{ padding: '1.5rem' }}>
+                <div style={{ color: 'var(--primary)', fontFamily: 'var(--font-mono)', fontSize: '1.5rem', fontWeight: 900, marginBottom: '0.75rem' }}>
+                  {step.number}
+                </div>
+                <h4 style={{ color: 'var(--text-bright)', marginBottom: '0.6rem' }}>{step.title}</h4>
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', lineHeight: 1.6 }}>{step.description}</p>
+              </div>
+            </article>
+          ))}
+
+
+
+        </div>
+
+
+
+      </section>
+
+      <section className="container" style={{ textAlign: 'center' ,marginTop:'1rem'}}>
         <div className="glass-panel" style={{ padding: '3rem', background: 'linear-gradient(135deg, rgba(3,76,98,0.3) 0%, rgba(6,11,19,0.9) 100%)', borderColor: 'rgba(4,146,194,0.3)' }}>
-          <h3 style={{ marginBottom: '0.5rem' }}>How BPO Appraisal Works</h3>
+        
           <p style={{ color: 'var(--text-muted)', maxWidth: '600px', margin: '0 auto 1.5rem', fontSize: '0.95rem' }}>
             Have questions about standard BPO auto acceptance workflows? Read our frequently asked questions below or contact our support team.
           </p>

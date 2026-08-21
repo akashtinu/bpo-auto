@@ -26,7 +26,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="contact-page" style={{ paddingBottom: '5rem' }}>
+    <div className="contact-page" style={{ paddingBottom: '5rem' ,padding:'2rem'}}>
       {/* Hero */}
       <section className="hero-section container" style={{ paddingBottom: '3rem' }}>
         <h1 className="hero-title" style={{ fontSize: '3rem' }}>Contact BPO Auto Accept</h1>
@@ -35,11 +35,11 @@ const Contact = () => {
         </p>
       </section>
 
-      <section className="container" style={{ marginBottom: '4rem' }}>
-        <div className="contact-layout" style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '4rem', alignItems: 'start' }}>
+      <section  style={{ marginBottom: '4rem' }}>
+        <div className="contact-layout " style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '4rem', alignItems: 'start'}}>
           
           {/* Contact Form */}
-          <div className="contact-form-column glass-panel" style={{ padding: '2.5rem', position: 'sticky', top: '100px' }}>
+          <div className="contact-form-column glass-panel " style={{ padding: '2.5rem', position: 'sticky', top: '100px' }}>
             {success ? (
               <div style={{ textAlign: 'center', padding: '2rem' }}>
                 <CheckCircle size={56} style={{ color: 'var(--success)', marginBottom: '1.25rem', margin: '0 auto' }} />
@@ -90,7 +90,7 @@ const Contact = () => {
           </div>
 
           {/* Content Block */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', color: 'var(--text-muted)', lineHeight: '1.8' }}>
+          <div  style={{ display: 'flex', flexDirection: 'column', gap: '2rem', color: 'var(--text-muted)', lineHeight: '1.8' }}>
             <div>
               <p style={{ marginBottom: '1rem' }}>
                 Need a faster and more efficient way to capture Broker Price Opinion (BPO) and appraisal orders? Our team is here to help. Whether you have questions about our BPO Auto Accept Software, need assistance with setup, or want to learn more about our BPO Order Capture solutions, we’re ready to assist you.
@@ -132,8 +132,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 style={{ marginBottom: '0.25rem' }}>Our mail:</h4>
-                    <a href="mailto:info@bpoautoaccept.com" style={{ color: 'var(--primary)', fontSize: '1.1rem', fontWeight: '500' }}>
-                      info@bpoautoaccept.com
+                    <a href="mailto:info@autoacceptbpo.com" style={{ color: 'var(--primary)', fontSize: '1.1rem', fontWeight: '500' }}>
+                      info@autoacceptbpo.com
                     </a>
                   </div>
                 </div>
