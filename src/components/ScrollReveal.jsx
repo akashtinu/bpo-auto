@@ -33,9 +33,9 @@ export const ScrollRevealObserver = () => {
       }, observerOptions);
 
       elements.forEach((el) => {
-        // If element is already in viewport on initial render, reveal immediately
+        // Only trigger instantly if it is near the top of the initial load screen (first 250px)
         const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom >= 0) {
+        if (rect.top < 250 && rect.bottom >= 0) {
           el.classList.add('active');
         } else {
           observer.observe(el);

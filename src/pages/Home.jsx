@@ -218,7 +218,7 @@ const Home = () => {
 
       {/* ─── BPO Auto Acceptance Intro ─── */}
       <section className="container reveal" style={{ marginBottom: '5rem' }}>
-        <div className="glass-panel" style={{ padding: '3rem', display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '3rem', alignItems: 'center' }}>
+        <div className="glass-panel home-intro-panel" style={{ alignItems: 'center' }}>
           <div className="reveal-left">
             <h2 style={{ fontSize: '2rem', marginBottom: '1.25rem' }}>BPO Auto Acceptance Services</h2>
             <p style={{ fontSize: '1.02rem', lineHeight: 1.8, marginBottom: '1.25rem', color: 'var(--text-main)' }}>
@@ -522,6 +522,13 @@ const Home = () => {
           gap: 4rem;
         }
 
+        .home-intro-panel {
+          padding: 3rem;
+          display: grid;
+          grid-template-columns: 1.2fr 1fr;
+          gap: 3rem;
+        }
+
         .info-alert-box {
           padding: 2rem;
           border-left: 4px solid var(--primary);
@@ -545,8 +552,9 @@ const Home = () => {
           .hero-section {
             padding: 2rem 1.5rem 1rem;
           }
-          section .glass-panel[style*="grid-template-columns: 1.2fr 1fr"] {
+          .home-intro-panel {
             grid-template-columns: 1fr !important;
+            padding: 1.5rem !important;
             gap: 2rem !important;
           }
         }
