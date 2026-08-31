@@ -93,18 +93,18 @@ const FAQ = () => {
   return (
     <div style={{ paddingBottom: '5rem' }}>
       {/* Hero */}
-      <section className="hero-section container" style={{ paddingBottom: '3rem' }}>
-        <h1 className="hero-title" style={{ fontSize: '3rem' }}>Frequently asked Questions(FAQ)</h1>
-        <p className="hero-subtitle">
+      <section className="hero-section container reveal-fade" style={{ paddingBottom: '3rem' }}>
+        <h1 className="hero-title reveal-fade delay-1" style={{ fontSize: '3rem' }}>Frequently asked Questions(FAQ)</h1>
+        <p className="hero-subtitle reveal-fade delay-2">
           Find answers to the most frequently asked questions about our BPO Auto Acceptance Software. Learn how our BPO Order Capture system works, pricing, supported vendor portals, setup process, security, and how our automation helps you capture more Broker Price Opinion (BPO) and appraisal orders.
         </p>
       </section>
 
       {/* FAQ Accordion */}
-      <section className="container" style={{ marginBottom: '5rem', maxWidth: '800px' }}>
+      <section className="container reveal" style={{ marginBottom: '5rem', maxWidth: '800px' }}>
         <div className="faq-list" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           {FAQS.map((item, i) => (
-            <div key={i} className="faq-item" style={{ 
+            <div key={i} className={`faq-item reveal-hover-card reveal-left delay-${(i % 3) + 1}`} style={{ 
               background: 'rgba(255,255,255,0.02)', 
               border: '1px solid rgba(255,255,255,0.05)',
               borderRadius: '0.5rem',

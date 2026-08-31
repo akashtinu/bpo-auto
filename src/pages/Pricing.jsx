@@ -60,6 +60,11 @@ const Pricing = () => {
     navigate('/cart');
   };
 
+  const handleCartLinkClick = () => {
+    setMobileMenuOpen(false);
+    window.scrollTo(0, 0);
+  };
+
   const getSortedProducts = () => {
     let sorted = [...PRODUCTS];
     switch (sortBy) {
@@ -104,10 +109,10 @@ const Pricing = () => {
       </section>
 
       {/* Product Grid */}
-      <section className="container" style={{ marginBottom: '5rem' }}>
+      <section className="container reveal" style={{ marginBottom: '5rem' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '2rem' }}>
-          {getSortedProducts().map((product) => (
-            <div key={product.id} className="product-card" style={{ position: 'relative', display: 'flex', flexDirection: 'column' }}>
+          {getSortedProducts().map((product, idx) => (
+            <div key={product.id} className={`product-card reveal-hover-card reveal-scale delay-${(idx % 4) + 1}`} style={{ position: 'relative', display: 'flex', flexDirection: 'column' ,borderRadius:'12px'}}>
               {product.sale && (
                 <div style={{
                   position: 'absolute', top: '10px', left: '10px', 
@@ -121,6 +126,8 @@ const Pricing = () => {
                 <img 
                   src={product.image} 
                   alt={product.name} 
+                  width="300"
+                  height="300"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.3s ease' }} 
                   className="product-img"
                 />
@@ -129,7 +136,7 @@ const Pricing = () => {
                 <div className="add-to-cart-overlay">
                   <button 
                     onClick={(e) => handleAddToCart(e, product)}
-                    className="btn btn-primary"
+                    className="btn btn-primary" 
                     style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', opacity: 0.95 }}
                   >
                     <ShoppingCart size={18} />
@@ -170,6 +177,8 @@ const Pricing = () => {
       <style>{`
         .product-card {
           transition: transform 0.2s ease, box-shadow 0.2s ease;
+          border-radius: 12px;
+          overflow: hidden;
         }
         .product-card:hover {
           transform: translateY(-5px);

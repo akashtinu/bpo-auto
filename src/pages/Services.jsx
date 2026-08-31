@@ -7,7 +7,7 @@ import {
 import sign from '../assets/house_sign.jpg';
 import handshack from '../assets/businessmen-shake-hands.jpg';
 import monitoring from '../assets/monitering-systom.jpg';
-import autoaccept from '../assets/auto-accept.png';
+import autoaccept from '../assets/auto-accept.jpg';
 
 
 const Services = () => {
@@ -15,30 +15,23 @@ const Services = () => {
     <div className="services-page" style={{ paddingBottom: '5rem' }}>
       
       {/* ─── Hero Section ─── */}
-      <section className="hero-section container" style={{ paddingBottom: '2.5rem' }}>
-        <div className="hero-badge">
+      <section className="hero-section container reveal-fade" style={{ paddingBottom: '2.5rem' }}>
+        <div className="hero-badge reveal-scale">
           <Zap size={14} style={{ marginRight: '4px' }} /> Our BPO Auto Acceptance Solutions
         </div>
-        <h1 className="hero-title" style={{ fontSize: '3rem', marginBottom: '1rem' }}>
+        <h1 className="hero-title reveal-fade delay-1" style={{ fontSize: '3rem', marginBottom: '1rem' }}>
           Innovative BPO Automation for Faster Order Capture
         </h1>
-        <p className="hero-subtitle" style={{ fontSize: '1.15rem', color: 'var(--text-main)', lineHeight: 1.6 }}>
+        <p className="hero-subtitle reveal-fade delay-2" style={{ fontSize: '1.15rem', color: 'var(--text-main)', lineHeight: 1.6 }}>
           Looking for a smarter way to manage Broker Price Opinion (BPO) and appraisal orders? Our BPO Auto Acceptance Solutions are designed for real estate professionals, appraisers, brokers, lenders, and valuation companies who want to increase efficiency, secure more assignments, and maximize revenue.
         </p>
-
-         {/* <p  className="hero-subtitle" style={{ fontSize: '1.15rem', color: 'var(--text-main)', lineHeight: 1.6 }}>
-              Powered by our advanced BPO Auto Acceptance Software, the system continuously monitors vendor portals in real time and automatically captures eligible BPO and appraisal orders based on your customized preferences. By eliminating manual refreshing and reducing response times, our intelligent BPO automation solution helps you stay ahead of the competition while improving your BPO order acceptance rate.
-            </p>
-            <p  className="hero-subtitle" style={{ fontSize: '1.15rem', color: 'var(--text-main)', lineHeight: 1.6 }}>
-              Whether you manage a few assignments or hundreds each month, our cloud-based BPO order management platform delivers reliable, secure, and efficient automation to help your business grow.
-            </p>   */}
 
       </section>
 
       {/* ─── Service Overview Grid ─── */}
-      <section className="container" style={{ marginBottom: '5rem' }}>
+      <section className="container reveal" style={{ marginBottom: '5rem' }}>
         <div className="services-overview" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', fontSize: '1.02rem', lineHeight: 1.8, color: 'var(--text-main)' }}>
+          <div className="reveal-left" style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', fontSize: '1.02rem', lineHeight: 1.8, color: 'var(--text-main)' }}>
             <p>
               Powered by our advanced BPO Auto Acceptance Software, the system continuously monitors vendor portals in real time and automatically captures eligible BPO and appraisal orders based on your customized preferences. By eliminating manual refreshing and reducing response times, our intelligent BPO automation solution helps you stay ahead of the competition while improving your BPO order acceptance rate.
             </p>
@@ -49,7 +42,7 @@ const Services = () => {
               <Link to="/register" className="btn btn-primary">Start Automating Now</Link>
             </div>
           </div>
-          <div className="glass-panel" style={{ padding: '2.5rem', background: 'rgba(16, 29, 47, 0.45)' }}>
+          <div className="glass-panel reveal-right delay-2" style={{ padding: '2.5rem', background: 'rgba(16, 29, 47, 0.45)' }}>
             <h4 style={{ color: 'var(--primary)', marginBottom: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '0.85rem', fontWeight: 700 }}>Our Service</h4>
             <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--text-bright)' }}>BPO Order Acceptance</h3>
             <p style={{ fontSize: '0.95rem', lineHeight: 1.7, marginBottom: '1.25rem', color: 'var(--text-main)' }}>
@@ -253,6 +246,10 @@ const Services = () => {
               <img
                 src={step.image}
                 alt={step.title}
+                width="400"
+                height="170"
+                className="reveal-img-grow"
+                loading="lazy"
                 style={{ width: '100%', height: '170px', objectFit: 'cover', display: 'block' }}
               />
               <div style={{ padding: '1.5rem' }}>

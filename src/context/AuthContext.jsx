@@ -53,6 +53,38 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const loginWithGoogle = async (credential, mode = 'any') => {
+    setLoading(true);
+    try {
+      const response = await api.post('/api/auth/google', { credential, mode });
+      if (response.status === 'success' && response.user) {
+        setUser(response.user);
+        return response.user;
+      }
+      throw new Error(response.message || 'Google authentication failed');
+    } catch (err) {
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const loginWithGoogleDirect = async (email, name, mode = 'any') => {
+    setLoading(true);
+    try {
+      const response = await api.post('/api/auth/google-direct', { email, name, mode });
+      if (response.status === 'success' && response.user) {
+        setUser(response.user);
+        return response.user;
+      }
+      throw new Error(response.message || 'Google authentication failed');
+    } catch (err) {
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const logout = async () => {
     setLoading(true);
     try {
@@ -66,7 +98,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, register, logout, setUser }}>
+    <AuthContext.Provider value={{ user, loading, login, register, loginWithGoogle, loginWithGoogleDirect, logout, setUser }}>
       {children}
     </AuthContext.Provider>
   );

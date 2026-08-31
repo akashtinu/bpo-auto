@@ -5,19 +5,19 @@ const HowItWorks = () => {
   return (
     <div style={{ paddingBottom: '5rem' }}>
       {/* Hero */}
-      <section className="hero-section container" style={{ paddingBottom: '3rem' }}>
-        <div className="hero-badge">
+      <section className="hero-section container reveal-fade" style={{ paddingBottom: '3rem' }}>
+        <div className="hero-badge reveal-scale">
           <Cloud size={14} style={{ marginRight: '4px' }} /> Cloud-Based Automation
         </div>
-        <h1 className="hero-title" style={{ fontSize: '3rem' }}>How Our Automation Works</h1>
-        <p className="hero-subtitle">
+        <h1 className="hero-title reveal-fade delay-1" style={{ fontSize: '3rem' }}>How Our Automation Works</h1>
+        <p className="hero-subtitle reveal-fade delay-2">
           A transparent look at our cloud-based infrastructure, our proprietary acceptance engine, and the security measures that protect your accounts.
         </p>
       </section>
 
       {/* Steps Section */}
-      <section className="container" style={{ marginBottom: '6rem' }}>
-        <div className="section-header">
+      <section className="container reveal" style={{ marginBottom: '6rem' }}>
+        <div className="section-header reveal-fade">
           <h2>The 4-Step Capture Process</h2>
           <p>From order detection to acceptance — all handled automatically in seconds.</p>
         </div>
@@ -48,8 +48,8 @@ const HowItWorks = () => {
               title: 'You Get Billed Weekly',
               desc: 'At the end of each week, an invoice is generated based on the number of accepted orders: $3 for standard orders and $4 for conditional-based orders. You receive your invoice via email and can pay via PayPal or bank transfer through your dashboard.'
             }
-          ].map((item) => (
-            <div key={item.step} className="glass-card" style={{ display: 'flex', gap: '2rem', alignItems: 'flex-start' }}>
+          ].map((item, idx) => (
+            <div key={item.step} className={`glass-card reveal-hover-card reveal-left delay-${idx + 1}`} style={{ display: 'flex', gap: '2rem', alignItems: 'flex-start' }}>
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem', minWidth: '60px' }}>
                 <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--primary)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Step</span>
                 <span style={{ fontSize: '2.5rem', fontWeight: 900, color: 'var(--text-bright)', lineHeight: 1 }}>{item.step}</span>

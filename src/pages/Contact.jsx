@@ -28,18 +28,18 @@ const Contact = () => {
   return (
     <div className="contact-page" style={{ paddingBottom: '5rem' ,padding:'2rem'}}>
       {/* Hero */}
-      <section className="hero-section container" style={{ paddingBottom: '3rem' }}>
-        <h1 className="hero-title" style={{ fontSize: '3rem' }}>Contact BPO Auto Accept</h1>
-        <p className="hero-subtitle">
+      <section className="hero-section container reveal-fade" style={{ paddingBottom: '3rem' }}>
+        <h1 className="hero-title reveal-fade delay-1" style={{ fontSize: '3rem' }}>Contact BPO Auto Accept</h1>
+        <p className="hero-subtitle reveal-fade delay-2">
           Get in Touch with Our BPO Auto Acceptance Experts
         </p>
       </section>
 
-      <section  style={{ marginBottom: '4rem' }}>
-        <div className="contact-layout " style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '4rem', alignItems: 'start'}}>
+      <section className="reveal" style={{ marginBottom: '4rem',display:'flex',justifyContent:'center' }}>
+        <div className="contact-layout " style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '4rem', alignItems: 'start',     maxWidth: '1200px',}}>
           
           {/* Contact Form */}
-          <div className="contact-form-column glass-panel " style={{ padding: '2.5rem', position: 'sticky', top: '100px' }}>
+          <div className="contact-form-column glass-panel reveal-left delay-1" style={{ padding: '2.5rem', position: 'sticky', top: '100px' }}>
             {success ? (
               <div style={{ textAlign: 'center', padding: '2rem' }}>
                 <CheckCircle size={56} style={{ color: 'var(--success)', marginBottom: '1.25rem', margin: '0 auto' }} />

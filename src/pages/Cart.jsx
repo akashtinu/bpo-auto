@@ -1,10 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ShoppingCart, CheckCircle, Trash2, Plus, Minus } from 'lucide-react';
+import { ShoppingCart, CheckCircle, Trash2, Plus, Minus, AlertCircle } from 'lucide-react';
+import { PayPalButtons } from '@paypal/react-paypal-js';
 import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext';
+import { api } from '../utils/api';
+
+const PAYPAL_CLIENT_ID = import.meta.env.VITE_PAYPAL_CLIENT_ID || 'AdRd-MNWRwMbiLzo5I0jcR0u1u9RmLvW2N_Cm_8dFnRSl7WvVelPl1qqSdIL6B-3WfqfwvipM2wk6gTW';
+const PAYPAL_ENABLED = Boolean(PAYPAL_CLIENT_ID);
+
 
 const Cart = () => {
-  const { cartItems, removeFromCart, updateQuantity, cartTotal, cartCount } = useCart();
+  // Get cart data from context
+  const { cartItems, cartCount, cartTotal, updateQuantity, removeFromCart, clearCart } = useCart();
+  const { user } = useAuth();
+  const [paymentMessage, setPaymentMessage] = useState({ type: '', text: '' });
+
+  const createPayPalOrder = async () => {
+    const response = await api.post('/api/paypal/orders', {
+      items: cartItems.map(item => ({ id: item.id, quantity: item.quantity }))
+    });
+    return response.order_id;
+  };
+
+  const capturePayPalOrder = async (data) => {
+    try {
+      await api.post('/api/paypal/capture', { order_id: data.orderID });
+      clearCart();
+      setPaymentMessage({ type: 'success', text: 'Payment completed successfully. Thank you for your order.' });
+    } catch (error) {
+      setPaymentMessage({ type: 'error', text: error.message });
+      throw error;
+    }
+  };
 
   if (cartItems.length === 0) {
     return (
@@ -43,7 +71,7 @@ const Cart = () => {
             {cartItems.map((item) => (
               <div key={item.id} className="glass-panel" style={{ padding: '1.5rem', display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
                 <div style={{ width: '100px', height: '100px', borderRadius: '8px', overflow: 'hidden', border: '1px solid var(--border-color)', flexShrink: 0 }}>
-                  <img src={item.image} alt={item.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <img src={item.image} alt={item.name} width="100" height="100" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
                 
                 <div style={{ flexGrow: 1 }}>
@@ -106,6 +134,33 @@ const Cart = () => {
             <Link to="/register" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center', padding: '1rem', fontSize: '1.1rem', marginBottom: '1rem' }}>
               Proceed to Checkout
             </Link>
+
+            {paymentMessage.text && (
+              <div role="status" style={{ color: paymentMessage.type === 'success' ? 'var(--success)' : 'var(--danger)', marginBottom: '1rem', fontSize: '0.9rem' }}>
+                {paymentMessage.type === 'success' ? <CheckCircle size={16} /> : <AlertCircle size={16} />} {paymentMessage.text}
+              </div>
+            )}
+
+            {user && PAYPAL_ENABLED ? (
+              <PayPalButtons
+                style={{ layout: 'vertical', shape: 'rect', label: 'paypal' }}
+                forceReRender={[cartTotal]}
+                createOrder={createPayPalOrder}
+                onApprove={capturePayPalOrder}
+                onError={(error) => {
+                  console.error('PayPal error:', error);
+                  setPaymentMessage({ type: 'error', text: 'PayPal could not complete the payment. Please try again.' });
+                }}
+              />
+            ) : user ? (
+              <p style={{ color: 'var(--text-muted)', textAlign: 'center', fontSize: '0.9rem' }}>
+                PayPal is not configured yet. Add `VITE_PAYPAL_CLIENT_ID` to the frontend environment.
+              </p>
+            ) : (
+              <p style={{ color: 'var(--text-muted)', textAlign: 'center', fontSize: '0.9rem' }}>
+                <Link to="/login" style={{ color: 'var(--primary)' }}>Log in</Link> to pay with PayPal.
+              </p>
+            )}
             
             <Link to="/pricing" style={{ display: 'block', textAlign: 'center', color: 'var(--text-muted)', textDecoration: 'none', fontSize: '0.9rem' }}>
               Continue Shopping
@@ -128,5 +183,6 @@ const Cart = () => {
     </div>
   );
 };
+
 
 export default Cart;

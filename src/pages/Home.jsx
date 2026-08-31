@@ -58,15 +58,14 @@ const Home = () => {
   };
 
   return (
-    <div style={{ paddingBottom: '5rem' }}>
+    <div className="tech-dot-grid" style={{ paddingBottom: '5rem' }}>
       
       {/* ─── Hero Section with Enquiry Form ─── */}
-      <section className="hero-section container" style={{ padding: '4rem 1.5rem 3rem' }}>
+      <section className="hero-section container reveal-fade" style={{ padding: '4rem 1.5rem 3rem' }}>
         <div className="hero-grid-two">
           
           {/* Left: Text Content */}
-          
-          <div style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          <div className="reveal-left" style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <span className="badge badge-warning" style={{ fontSize: '0.8rem', padding: '0.35rem 0.75rem', marginBottom: '0.5rem' ,display: 'flex',justifyContent: 'center', alignItems: 'center',borderRadius: '999px'}}>
                 Starting at $3 per order
               </span>
@@ -104,11 +103,8 @@ const Home = () => {
           </div>
 
           {/* Right: Enquiry Form */}
-          <div className="glass-panel" style={{ padding: '2rem', border: '1px solid var(--border-color-hover)', background: 'rgba(16, 29, 47, 0.65)' }}>
+          <div className="glass-panel reveal-right delay-2" style={{ padding: '2rem', border: '1px solid var(--border-color-hover)', background: 'rgba(16, 29, 47, 0.65)' }}>
             <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
-              {/* <span className="badge badge-warning" style={{ fontSize: '0.8rem', padding: '0.35rem 0.75rem', marginBottom: '0.5rem' }}>
-                Starting at $3 per order
-              </span> */}
               <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: 'var(--text-bright)' }}>Enquire Here</h3>
               
               <p style={{ fontSize: '0.9rem', color: 'gray',marginBottom:'5px' }}>
@@ -206,14 +202,14 @@ const Home = () => {
       </section>
 
       {/* ─── For Your Information Block ─── */}
-      <section className="container" style={{ marginBottom: '5rem' }}>
+      <section className="container reveal-scale" style={{ marginBottom: '5rem' }}>
         <div className="glass-panel info-alert-box">
           <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
             <AlertCircle size={24} style={{ color: 'var(--primary)', flexShrink: 0, marginTop: '2px' }} />
             <div>
               <h4 style={{ color: 'var(--text-bright)', marginBottom: '0.5rem', fontWeight: 700 }}>For Your Information</h4>
               <p style={{ fontSize: '0.92rem', lineHeight: 1.7, color: 'var(--text-main)' }}>
-                The fee for standard BPO order acceptance is **$3 per accepted order**. The fee for conditional-based order acceptance (like ZIP code match, price match, and type of order match) is charged at **$4 per accepted order**. Weekly payments must be made based on accepted orders for the first month. From the second month onwards, invoicing is processed twice monthly. Payments are accepted via PayPal or bank transfer. A non-refundable signup fee, as listed on the pricing page, is required to activate the account.
+                The fee for standard BPO order acceptance is <span style={{fontSize:'1.1rem'}}> $3 per accepted order </span>. The fee for conditional-based order acceptance like ZIP code match, price match, and type of order match is charged at <span style={{fontSize:'1.1rem'}}> $4 per accepted order</span>. Weekly payments must be made based on accepted orders for the first month. From the second month onwards, invoicing is processed twice monthly. Payments are accepted via PayPal or bank transfer. A non-refundable signup fee, as listed on the pricing page, is required to activate the account.
               </p>
             </div>
           </div>
@@ -221,9 +217,9 @@ const Home = () => {
       </section>
 
       {/* ─── BPO Auto Acceptance Intro ─── */}
-      <section className="container" style={{ marginBottom: '5rem' }}>
+      <section className="container reveal" style={{ marginBottom: '5rem' }}>
         <div className="glass-panel" style={{ padding: '3rem', display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '3rem', alignItems: 'center' }}>
-          <div>
+          <div className="reveal-left">
             <h2 style={{ fontSize: '2rem', marginBottom: '1.25rem' }}>BPO Auto Acceptance Services</h2>
             <p style={{ fontSize: '1.02rem', lineHeight: 1.8, marginBottom: '1.25rem', color: 'var(--text-main)' }}>
               Our BPO Auto Accept company provides fast, reliable, and automated BPO order acceptance for real estate agents, appraisers, lenders, investors, mortgage companies, and financial institutions. Using advanced BPO automation software, we instantly monitor vendor portals like Estreet, LRES, and others to accept Broker Price Opinion (BPO) and appraisal orders, helping you secure more orders to process in the middle of fierce competition.
@@ -236,21 +232,21 @@ const Home = () => {
             </p>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            <div className="glass-card" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+            <div className="glass-card reveal-hover-card reveal-right delay-1" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
               <div className="feature-icon-wrapper" style={{ margin: 0, flexShrink: 0 }}><Zap size={20} /></div>
               <div>
                 <h4 style={{ margin: 0 }}>Estreet & LRES Monitored</h4>
                 <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>Instant tracking across all main portals.</p>
               </div>
             </div>
-            <div className="glass-card" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+            <div className="glass-card reveal-hover-card reveal-right delay-2" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
               <div className="feature-icon-wrapper" style={{ margin: 0, flexShrink: 0 }}><Shield size={20} /></div>
               <div>
                 <h4 style={{ margin: 0 }}>Secure Vault Protection</h4>
                 <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>AES-256 encrypted credential storage.</p>
               </div>
             </div>
-            <div className="glass-card" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+            <div className="glass-card reveal-hover-card reveal-right delay-3" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
               <div className="feature-icon-wrapper" style={{ margin: 0, flexShrink: 0 }}><Sliders size={20} /></div>
               <div>
                 <h4 style={{ margin: 0 }}>Precision Custom Filters</h4>
@@ -262,8 +258,8 @@ const Home = () => {
       </section>
 
       {/* ─── Why Choose Our Services (Grid) ─── */}
-      <section className="container" style={{ marginBottom: '6rem' }}>
-        <div className="section-header">
+      <section className="container reveal" style={{ marginBottom: '6rem' }}>
+        <div className="section-header reveal-fade">
           <h2>Why Choose Our BPO Auto Acceptance Services?</h2>
           <p>We build top-tier, fast, and secure automation solutions specifically optimized for BPO professionals.</p>
         </div>
@@ -295,7 +291,7 @@ const Home = () => {
               desc: 'For clients requiring dedicated, high-performance BPO order automation, we offer exclusive automation tools and advanced monitoring solutions. Additional charges may apply depending on requirements.'
             }
           ].map((item, idx) => (
-            <div key={idx} className="glass-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+            <div key={idx} className={`glass-card reveal-hover-card reveal-scale delay-${(idx % 3) + 1}`} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
               <div>
                 <div className="feature-icon-wrapper" style={{ marginBottom: '1.25rem' }}>
                   <Star size={22} />
@@ -309,7 +305,7 @@ const Home = () => {
       </section>
 
       {/* ─── Who We Are Section ─── */}
-      <section id="about-us" className="container" style={{ marginBottom: '6rem' }}>
+      <section id="about-us" className="container reveal-fade" style={{ marginBottom: '6rem' }}>
         <div className="glass-panel" style={{ padding: '3.5rem', background: 'linear-gradient(135deg, rgba(6,11,19,0.95) 0%, rgba(3,76,98,0.2) 100%)' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', textAlign: 'left' }}>
             <span style={{ color: 'var(--primary)', textTransform: 'uppercase', letterSpacing: '0.15em', fontSize: '0.85rem', fontWeight: 700 }}>who we are</span>
@@ -332,8 +328,8 @@ const Home = () => {
       </section>
 
       {/* ─── How It Works Section ─── */}
-      <section id="how-it-works" className="container" style={{ marginBottom: '6rem' }}>
-        <div className="section-header">
+      <section id="how-it-works" className="container reveal" style={{ marginBottom: '6rem' }}>
+        <div className="section-header reveal-fade">
           <h2>How It Works?</h2>
           <p>Getting started with BPO Acceptor is quick and hassle-free—no software installation required. Our advanced BPO Auto Acceptance system is ready in just a few simple steps.</p>
         </div>
@@ -346,7 +342,7 @@ const Home = () => {
             { title: 'Focus on Growing Your Business', desc: 'Let our BPO automation software handle continuous order monitoring and acceptance while you focus on property inspections, client relationships, and expanding your real estate business.' },
             { title: 'Reliable, Secure & 24/7 Monitoring', desc: 'Our intelligent BPO order management system operates around the clock, providing fast, secure, and accurate order acceptance so you never miss valuable opportunities.' }
           ].map((step, idx) => (
-            <div key={idx} className="glass-card" style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
+            <div key={idx} className={`glass-card reveal-hover-card reveal-left delay-${(idx % 3) + 1}`} style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
               <div style={{ fontSize: '1.75rem', fontWeight: 900, color: 'var(--primary)', minWidth: '40px', textAlign: 'center' }}>
                 {idx + 1}
               </div>
@@ -359,36 +355,41 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ─── Vendor Portals We Deal With ─── */}
-      <section className="container" style={{ marginBottom: '6rem' }}>
-        <div className="section-header">
-          <h2>Vendor Portals That We Deal With!</h2>
-          <p>We automate orders for all major BPO, Valuation, REO, and Appraisal platforms.</p>
+      {/* ─── Vendor Portals We Deal With (Infinite Marquee) ─── */}
+      <section style={{ marginBottom: '6rem' }}>
+        <div className="container">
+          <div className="section-header reveal-fade" style={{ marginBottom: '2rem' }}>
+            <h2>Vendor Portals That We Deal With!</h2>
+            <p>We automate orders for all major BPO, Valuation, REO, and Appraisal platforms.</p>
+          </div>
         </div>
-        <div className="portals-grid">
-          {portalList.map(portal => (
-            <div key={portal} className="portal-item">
-              {portalImages[portal] ? (
-                <div style={{ width: '100%', height: '200px', borderRadius: '8px', overflow: 'hidden', background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border-color)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '0.75rem' }}>
-                  <img 
-                    src={portalImages[portal]} 
-                    alt={portal} 
-                    style={{ width: '100%', height: '100%', objectFit: 'contain', padding: '1rem' }}
-                  />
-                </div>
-              ) : (
-                <div className="portal-logo-mock" style={{ fontSize: '1.15rem', marginBottom: '0.75rem' }}>{portal}</div>
-              )}
-              <h4 style={{ fontSize: '0.95rem', fontWeight: 600, margin: '0 0 0.35rem 0', color: 'var(--text-bright)' }}>{portal}</h4>
-              <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', margin: 0 }}>Auto Accept Ready</p>
-            </div>
-          ))}
+        
+        <div className="portals-slider-container">
+          <div className="portals-slider-track">
+            {[...portalList, ...portalList].map((portal, idx) => (
+              <div key={`${portal}-${idx}`} className="portal-slide-card">
+                {portalImages[portal] ? (
+                  <div style={{ width: '100%', height: '100px', borderRadius: '8px', overflow: 'hidden', background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border-color)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '0.75rem' }}>
+                    <img 
+                      src={portalImages[portal]} 
+                      alt={portal} 
+                      style={{ width: '100%', height: '100%', objectFit: 'contain', padding: '0.5rem' }}
+                    />
+                  </div>
+                ) : (
+                  <div className="portal-logo-mock" style={{ fontSize: '1rem', marginBottom: '0.75rem', height: '100px', display: 'flex', alignItems: 'center' }}>{portal}</div>
+                )}
+                <h4 style={{ fontSize: '0.9rem', fontWeight: 600, margin: '0 0 0.25rem 0', color: 'var(--text-bright)' }}>{portal}</h4>
+                <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', margin: 0 }}>Auto Accept Ready</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ─── Why Choose Our BPO Auto Acceptance Service (Detailed) ─── */}
-      <section className="container" style={{ marginBottom: '6rem' }}>
-        <div className="section-header">
+      <section className="container reveal" style={{ marginBottom: '6rem' }}>
+        <div className="section-header reveal-fade">
           <span style={{ color: 'var(--primary)', textTransform: 'uppercase', letterSpacing: '0.15em', fontSize: '0.85rem', fontWeight: 700 }}>OUR SERVICE</span>
           <h2 style={{ marginTop: '0.5rem' }}>Why Choose Our BPO Auto Acceptance Service?</h2>
         </div>
@@ -429,7 +430,7 @@ const Home = () => {
               desc: 'Our trusted BPO auto-accept software delivers fast, secure, and accurate order acceptance around the clock. With consistent performance and minimal downtime, you can rely on our system to capture more orders while maintaining maximum efficiency.'
             }
           ].map((item, idx) => (
-            <div key={idx} className="glass-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+            <div key={idx} className={`glass-card reveal-hover-card reveal-scale delay-${(idx % 3) + 1}`} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
               <div>
                 <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem', color: 'var(--text-bright)' }}>{item.title}</h3>
                 <p style={{ fontSize: '0.92rem', lineHeight: 1.6, color: 'var(--text-main)' }}>{item.desc}</p>
@@ -447,8 +448,8 @@ const Home = () => {
       </section>
 
       {/* ─── Advanced Browser Compatibility & Secure Automation ─── */}
-      <section className="container" style={{ marginBottom: '6rem' }}>
-        <div className="glass-panel" style={{ padding: '3.5rem' }}>
+      <section className="container reveal-scale" style={{ marginBottom: '6rem' }}>
+        <div className="glass-panel browser-compatibility-panel">
           <div style={{ marginBottom: '2.5rem', textAlign: 'center' }}>
             <h2 style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>Advanced Browser Compatibility & Secure Automation</h2>
             <p style={{ color: 'var(--text-muted)', maxWidth: '750px', margin: '0 auto', fontSize: '0.95rem' }}>
@@ -456,7 +457,7 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid-3" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginBottom: 0 }}>
+          <div className="grid-3 browser-compatibility-grid" style={{ gap: '1.5rem', marginBottom: 0 }}>
             {[
               { title: 'Human-Like Browser Performance', desc: 'Our automation operates within a complete browser environment, supporting normal browser functions such as graphics rendering, fonts, cookies, local storage, and browser compatibility to ensure consistent performance across supported vendor portals.' },
               { title: 'Reliable Session Management', desc: 'We maintain secure browsing sessions with proper cookie handling, local storage management, and authenticated connections, allowing uninterrupted BPO order monitoring and acceptance.' },
@@ -465,7 +466,7 @@ const Home = () => {
               { title: 'Secure & Privacy-Focused', desc: 'We prioritize secure connections, encrypted communication, and responsible handling of account information to protect your data while providing dependable BPO automation services.' },
               { title: 'Continuous Technology Updates', desc: 'Our platform is regularly updated to remain compatible with supported vendor portals, ensuring reliable performance, enhanced stability, and continuous improvements to your BPO Auto Acceptance workflow.' }
             ].map((item, idx) => (
-              <div key={idx} style={{ padding: '1.25rem', background: 'rgba(6,11,19,0.4)', borderRadius: '10px', border: '1px solid var(--border-color)' }}>
+              <div key={idx} className={`reveal-hover-card reveal-fade delay-${(idx % 3) + 1}`} style={{ padding: '1.25rem', background: 'rgba(6,11,19,0.4)', borderRadius: '10px', border: '1px solid var(--border-color)' }}>
                 <h4 style={{ color: 'var(--primary)', marginBottom: '0.5rem', fontSize: '1.05rem' }}>{item.title}</h4>
                 <p style={{ fontSize: '0.88rem', lineHeight: 1.6, color: 'var(--text-muted)' }}>{item.desc}</p>
               </div>
@@ -527,6 +528,15 @@ const Home = () => {
           background: rgba(4, 146, 194, 0.04);
         }
 
+        .browser-compatibility-panel {
+          padding: 3.5rem;
+        }
+
+        .browser-compatibility-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
         @media (max-width: 991px) {
           .hero-grid-two {
             grid-template-columns: 1fr;
@@ -538,6 +548,16 @@ const Home = () => {
           section .glass-panel[style*="grid-template-columns: 1.2fr 1fr"] {
             grid-template-columns: 1fr !important;
             gap: 2rem !important;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .browser-compatibility-panel {
+            padding: 1.5rem !important;
+          }
+          .browser-compatibility-grid {
+            grid-template-columns: 1fr !important;
+            gap: 1rem !important;
           }
         }
       `}</style>

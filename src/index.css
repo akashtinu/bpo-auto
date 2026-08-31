@@ -34,10 +34,18 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+
 }
 
 body {
   background-color: var(--bg-main);
+  /* background-image: url('./assets/3016743.jpg'); */
+  background-image: url('./assets/10016583_27263.jpg');
+  
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
   color: var(--text-main);
   font-family: var(--font-sans);
   min-height: 100vh;
@@ -1169,3 +1177,240 @@ display: none;
     min-width: 0;
   }
 }
+
+/* ─────────────────────────────────────────────────────────────
+   Scroll Reveal Animations & Smooth Entrance Effects
+   ───────────────────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-fade {
+  opacity: 0;
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity;
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.93) translateY(20px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-img-grow {
+  opacity: 0;
+  transform: scale(0.9) translateY(30px);
+  filter: blur(4px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform, filter;
+}
+
+/* Active State when element is in viewport */
+.reveal.active,
+.reveal-fade.active,
+.reveal-left.active,
+.reveal-right.active,
+.reveal-scale.active,
+.reveal-up.active {
+  opacity: 1;
+  transform: translateY(0) translateX(0) scale(1);
+}
+
+.reveal-img-grow.active {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  filter: blur(0);
+}
+
+/* Stagger Delay Modifiers */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+.delay-6 { transition-delay: 0.6s; }
+
+/* Enhanced Glow Hover Effect for Cards */
+.reveal-hover-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease;
+}
+
+.reveal-hover-card:hover {
+  transform: translateY(-7px) scale(1.01);
+  box-shadow: 0 15px 35px rgba(4, 146, 194, 0.25), 0 0 15px rgba(4, 146, 194, 0.15);
+  border-color: rgba(4, 146, 194, 0.5);
+}
+
+/* --- High-Tech Cyberpunk & Glassmorphism Animation System --- */
+
+/* Scroll progress bar indicator at top of viewport */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--primary-hover) 50%, var(--success) 100%);
+  z-index: 10001;
+  width: 0%;
+  transition: width 0.1s ease-out;
+  box-shadow: 0 0 8px rgba(4, 146, 194, 0.8);
+}
+
+/* Glassmorphic Shimmer Shine Sweep on Hover */
+.glass-card, .glass-panel, .portal-item, .info-alert-box {
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card::before, .glass-panel::before, .portal-item::before, .info-alert-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(4, 146, 194, 0.12) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  transition: 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glass-card:hover::before, .glass-panel:hover::before, .portal-item:hover::before, .info-alert-box:hover::before {
+  left: 150%;
+}
+
+/* Digital Tech Grid Background Dot Effect */
+.tech-dot-grid {
+  background-image: radial-gradient(rgba(4, 146, 194, 0.1) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+  position: relative;
+}
+
+/* Cyber Neon Border Pulse Flow */
+.cyber-panel-glow {
+  position: relative;
+}
+.cyber-panel-glow::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary));
+  background-size: 200% auto;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 2;
+  animation: cyber-border-flow 4s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes cyber-border-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Technical Infinite Portal Slider (Auto-scroll) */
+.portals-slider-container {
+  overflow: hidden;
+  padding: 2rem 0;
+  width: 100%;
+  position: relative;
+}
+
+.portals-slider-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15%;
+  height: 100%;
+  background: linear-gradient(to right, var(--bg-main) 0%, transparent 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.portals-slider-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 15%;
+  height: 100%;
+  background: linear-gradient(to left, var(--bg-main) 0%, transparent 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.portals-slider-track {
+  display: flex;
+  width: calc(260px * 14);
+  animation: infinite-scroll 25s linear infinite;
+}
+
+.portals-slider-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes infinite-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-260px * 7)); }
+}
+
+.portal-slide-card {
+  width: 240px;
+  flex-shrink: 0;
+  margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem;
+  background: rgba(16, 29, 47, 0.35);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  transition: var(--transition-smooth);
+}
+
+.portal-slide-card:hover {
+  border-color: var(--primary);
+  background: rgba(16, 29, 47, 0.6);
+  transform: translateY(-5px);
+  box-shadow: var(--glow-shadow);
+}
+
+

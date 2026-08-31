@@ -6,31 +6,74 @@ import office from '../assets/Image-7.webp';
 import working from '../assets/working.jpg';
 import bulding from '../assets/bulting_big.jpg';
 
+// Animated Counter Component that counts up from 0 to target when scrolled into view
+const AnimatedCounter = ({ target, suffix = '', prefix = '', duration = 1800 }) => {
+  const [count, setCount] = React.useState(0);
+  const ref = React.useRef(null);
+  const started = React.useRef(false);
+
+  React.useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !started.current) {
+            started.current = true;
+            let startTimestamp = null;
+            const step = (timestamp) => {
+              if (!startTimestamp) startTimestamp = timestamp;
+              const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+              const easeOut = 1 - Math.pow(1 - progress, 3);
+              setCount(Math.floor(easeOut * target));
+              if (progress < 1) {
+                requestAnimationFrame(step);
+              } else {
+                setCount(target);
+              }
+            };
+            requestAnimationFrame(step);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [target, duration]);
+
+  return (
+    <span ref={ref}>
+      {prefix}{count}{suffix}
+    </span>
+  );
+};
+
 const About = () => {
   return (
     <div className="about-page" style={{ paddingBottom: '5rem' }}>
       
       {/* ─── Hero Section ─── */}
-      <section className="hero-section container" style={{ paddingBottom: '2rem' }}>
-        <div className="hero-badge">
+      <section className="hero-section container reveal-fade" style={{ paddingBottom: '2rem' }}>
+        <div className="hero-badge reveal-scale">
           <Shield size={14} style={{ marginRight: '4px' }} /> About Us | BPO Auto Accept Software
         </div>
-        <h1 className="hero-title" style={{ fontSize: '3rem', marginBottom: '1rem' }}>
+        <h1 className="hero-title reveal-fade delay-1" style={{ fontSize: '3rem', marginBottom: '1rem' }}>
           Expert Broker Price Opinion (BPO) Auto Acceptance
         </h1>
-        <p className="hero-subtitle">
+        <p className="hero-subtitle reveal-fade delay-2">
           At BPO Auto Accept, we specialize in automated Broker Price Opinion (BPO) order acceptance for real estate professionals, appraisers, lenders, and valuation companies.
         </p>
       </section>
 
       {/* ─── Mission & Intro Grid ─── */}
-      <section className="container" style={{ marginBottom: '5rem' }}>
+      <section className="container reveal" style={{ marginBottom: '5rem' }}>
         <div className="about-main-grid" style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '3rem', alignItems: 'center' }}>
           
           {/* Left: Mission & Details */}
-          <div>
-            
-
+          <div className="reveal-left">
             <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--text-bright)' }}>About Us</h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', color: 'var(--text-main)', lineHeight: 1.8 }}>
               <p>
@@ -59,28 +102,8 @@ const About = () => {
           </div>
 
           {/* Right: Counter Stats & Side Details */}
-         <div className="about-side-stack" style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-            
-            {/* Stats Panel */}
-            {/* <div className="glass-panel" style={{ padding: '2rem', textAlign: 'center' }}>
-              <h4 style={{ marginBottom: '1.5rem', fontSize: '1.1rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Performance Metrics</h4>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-                <div>
-                  <div style={{ fontSize: '3rem', fontWeight: 900, color: 'var(--primary)', lineHeight: 1 }}>2 +</div>
-                  <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginTop: '0.35rem' }}>Years Experience</div>
-                </div>
-                <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: '1.5rem' }}>
-                  <div style={{ fontSize: '3rem', fontWeight: 900, color: 'var(--primary)', lineHeight: 1 }}>15 +</div>
-                  <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginTop: '0.35rem' }}>Clients Across US</div>
-                </div>
-                <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: '1.5rem' }}>
-                  <div style={{ fontSize: '3rem', fontWeight: 900, color: 'var(--primary)', lineHeight: 1 }}>150 k+</div>
-                  <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginTop: '0.35rem' }}>Worth of Orders Captured ($)</div>
-                </div>
-              </div>
-            </div> */}
-
-<div className="glass-panel" style={{ padding: '2rem', borderLeft: '4px solid var(--primary)', background: 'rgba(4,146,194,0.04)', marginBottom: '2.5rem' }}>
+          <div className="about-side-stack reveal-right delay-2" style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+            <div className="glass-panel" style={{ padding: '2rem', borderLeft: '4px solid var(--primary)', background: 'rgba(4,146,194,0.04)', marginBottom: '2.5rem' }}>
               <h3 style={{ color: 'var(--text-bright)', marginBottom: '0.75rem', fontSize: '1.25rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                 Our Mission
               </h3>
@@ -89,11 +112,10 @@ const About = () => {
               </p>
             </div>
 
-
-            <img src={office} alt="" />
+            <img src={office} alt="BPO office" width="600" height="400" className="reveal-img-grow" style={{ borderRadius: '12px', width: '100%', height: 'auto' }} />
 
             {/* Quick Who-We-Are Summary Box */}
-            <div className="glass-card" style={{ borderColor: 'rgba(4, 146, 194, 0.25)' }}>
+            <div className="glass-card reveal-hover-card" style={{ borderColor: 'rgba(4, 146, 194, 0.25)' }}>
               <h4 style={{ color: 'var(--primary)', marginBottom: '0.75rem' }}>Who Can Use This?</h4>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem', fontSize: '0.92rem' }}>
                 <li style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
@@ -116,26 +138,33 @@ const About = () => {
 
           </div>
         
-
         </div>
       </section>
-        <div className="glass-panel about-metrics" style={{ padding: '2rem', textAlign: 'center',marginBottom:'40px' }}>
-          <h4 style={{ marginBottom: '1.5rem', fontSize: '1.1rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Performance Metrics</h4>
-          <div className="about-metrics-grid" style={{ display: 'flex', justifyContent: 'space-between', gap: '2rem', flexWrap: 'wrap' }}>
-            <div className="about-metric" style={{ flex: '1 1 180px', minWidth: '120px', padding: '1rem 0.5rem', borderRight: '1px solid var(--border-color)' }}>
-              <div style={{ fontSize: '3rem', fontWeight: 900, color: 'var(--primary)', lineHeight: 1 }}>2 +</div>
-              <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginTop: '0.35rem' }}>Years Experience</div>
+
+      {/* ─── Performance Metrics (Animated Counter) ─── */}
+      <div className="glass-panel about-metrics reveal-scale" style={{ padding: '2rem', textAlign: 'center', marginBottom: '40px' }}>
+        <h4 style={{ marginBottom: '1.5rem', fontSize: '1.1rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Performance Metrics</h4>
+        <div className="about-metrics-grid" style={{ display: 'flex', justifyContent: 'space-between', gap: '2rem', flexWrap: 'wrap' }}>
+          <div className="about-metric" style={{ flex: '1 1 180px', minWidth: '120px', padding: '1rem 0.5rem', borderRight: '1px solid var(--border-color)' }}>
+            <div style={{ fontSize: '3rem', fontWeight: 900, color: 'var(--primary)', lineHeight: 1 }}>
+              <AnimatedCounter target={2} suffix=" +" />
             </div>
-            <div className="about-metric" style={{ flex: '1 1 180px', minWidth: '120px', padding: '1rem 0.5rem', borderRight: '1px solid var(--border-color)' }}>
-              <div style={{ fontSize: '3rem', fontWeight: 900, color: 'var(--primary)', lineHeight: 1 }}>15 +</div>
-              <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginTop: '0.35rem' }}>Clients Across US</div>
+            <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginTop: '0.35rem' }}>Years Experience</div>
+          </div>
+          <div className="about-metric" style={{ flex: '1 1 180px', minWidth: '120px', padding: '1rem 0.5rem', borderRight: '1px solid var(--border-color)' }}>
+            <div style={{ fontSize: '3rem', fontWeight: 900, color: 'var(--primary)', lineHeight: 1 }}>
+              <AnimatedCounter target={15} suffix=" +" />
             </div>
-            <div className="about-metric" style={{ flex: '1 1 180px', minWidth: '120px', padding: '1rem 0.5rem' }}>
-              <div style={{ fontSize: '3rem', fontWeight: 900, color: 'var(--primary)', lineHeight: 1 }}>150 k+</div>
-              <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginTop: '0.35rem' }}>Worth of Orders Captured ($)</div>
+            <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginTop: '0.35rem' }}>Clients Across US</div>
+          </div>
+          <div className="about-metric" style={{ flex: '1 1 180px', minWidth: '120px', padding: '1rem 0.5rem' }}>
+            <div style={{ fontSize: '3rem', fontWeight: 900, color: 'var(--primary)', lineHeight: 1 }}>
+              <AnimatedCounter target={150} suffix=" k+" />
             </div>
+            <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginTop: '0.35rem' }}>Worth of Orders Captured ($)</div>
           </div>
         </div>
+      </div>
 
       {/* ─── Who We Are & What We Do ─── */}
       <section className="container" style={{ marginBottom: '5rem' }}>
@@ -154,7 +183,7 @@ const About = () => {
           {/* What We Do */}
           <div  style={{display:'flex',justifyContent:'center',alignItems:'center'}} >
             
-          <img src={bulding}  alt="" className="aboutimage" />
+          <img src={bulding} alt="BPO building" width="600" height="400" className="aboutimage reveal-img-grow" style={{ width: '100%', height: 'auto' }} />
 
           </div>
 
@@ -171,7 +200,7 @@ const About = () => {
           {/* Who We Are */}
           <div className='box1'  style={{display:'flex',justifyContent:'center',alignItems:'center'}} >
             
-          <img src={working}  alt="" className="aboutimage" />
+          <img src={working} alt="BPO team working" width="600" height="400" className="aboutimage reveal-img-grow" style={{ width: '100%', height: 'auto' }} />
 
           </div>
 

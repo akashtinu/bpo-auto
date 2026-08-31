@@ -41,7 +41,7 @@ const Footer = () => {
           
           {/* Column 1: Brand & Contact */}
           <div className="footer-column">
-            <img src={logo} alt="logo" />
+            <img src={logo} alt="BPO Auto Accept Logo" width="180" height="45" style={{ height: '45px', width: 'auto', objectFit: 'contain', filter: 'brightness(2)' }} />
             <h4 style={{ color: 'var(--text-bright)', marginBottom: '1.25rem', fontSize: '1.1rem', fontWeight: 700 }}>
               One Solution for BPO Order Capture
             </h4>
@@ -66,7 +66,7 @@ const Footer = () => {
               Quick Links
             </h4>
             <ul className="footer-links" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
-              <li><Link to="/" onClick={handleFooterLinkClick}>Home</Link></li>
+              <li><Link to="/" onClick={handleFooterLinkClick} >   Home</Link></li>
               <li><Link to="/about" onClick={handleFooterLinkClick}>About</Link></li>
               <li><Link to="/services" onClick={handleFooterLinkClick}>Services</Link></li>
               <li><Link to="/order-capture" onClick={handleFooterLinkClick}>Order Capture</Link></li>
@@ -144,10 +144,7 @@ const Footer = () => {
 
 
 
-            {/* <ul className="footer-links">
-              <li><Link to="/contact">Send Inquiry Form</Link></li>
-              <li><Link to="/faq">Terms and conditions</Link></li>
-            </ul> */}
+           
           </div>
 
         </div>

@@ -1,42 +1,116 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { UserPlus, Eye, EyeOff, AlertCircle, X, CheckCircle } from 'lucide-react';
+import { UserPlus, Eye, EyeOff } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import { useToast } from '../components/Toast';
+
+const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID || '286428664456-8qnci6bohofe5cdja5kpnc7gq3v0baj5.apps.googleusercontent.com';
 
 const Register = () => {
-  const { register } = useAuth();
+  const { register, loginWithGoogle } = useAuth();
   const navigate = useNavigate();
   const [form, setForm] = useState({ name: '', email: '', phone: '', password: '', confirm: '' });
   const [showPass, setShowPass] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [msg, setMsg] = useState({ type: '', text: '' });
+  const { showToast } = useToast();
 
-  const showMsg = (type, text) => {
-    setMsg({ type, text });
-    setTimeout(() => setMsg({ type: '', text: '' }), 5000);
+  // Use a ref so Google's stored callback always calls the latest version
+  const handleGoogleSuccessRef = useRef(null);
+
+  // Keep ref up to date on every render
+  handleGoogleSuccessRef.current = async (response) => {
+    setLoading(true);
+    try {
+      const user = await loginWithGoogle(response.credential, 'register');
+      showToast({ type: 'success', title: 'Account Created!', message: 'Welcome! Your account has been set up successfully.' });
+      setTimeout(() => navigate(user.role === 'admin' ? '/admin' : '/dashboard'), 1000);
+    } catch (err) {
+      setLoading(false);
+      showToast({ type: 'error', title: 'Google Sign-Up Failed', message: err.message || 'Google sign-up failed. Please try again.' });
+    }
   };
+
+  // Initialize official Google Identity Services button once on mount
+  useEffect(() => {
+    // Stable wrapper that always calls the latest ref
+    const stableCallback = (response) => {
+      if (handleGoogleSuccessRef.current) {
+        handleGoogleSuccessRef.current(response);
+      }
+    };
+
+    const initGoogle = () => {
+      if (window.google?.accounts?.id) {
+        window.google.accounts.id.initialize({
+          client_id: GOOGLE_CLIENT_ID,
+          callback: stableCallback,
+          auto_select: false,
+          cancel_on_tap_outside: true
+        });
+
+        const btnContainer = document.getElementById('official-google-register-btn');
+        if (btnContainer) {
+          btnContainer.innerHTML = '';
+          window.google.accounts.id.renderButton(btnContainer, {
+            theme: 'outline',
+            size: 'large',
+            type: 'standard',
+            shape: 'rectangular',
+            text: 'signup_with',
+            logo_alignment: 'left',
+            width: Math.max(200, Math.min(380, window.innerWidth - 80))
+          });
+        }
+      }
+    };
+
+    if (window.google?.accounts?.id) {
+      initGoogle();
+    } else {
+      const interval = setInterval(() => {
+        if (window.google?.accounts?.id) {
+          initGoogle();
+          clearInterval(interval);
+        }
+      }, 250);
+      return () => clearInterval(interval);
+    }
+  }, []);
 
   const handleChange = e => setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = async e => {
     e.preventDefault();
-    setMsg({ type: '', text: '' });
 
     if (form.password !== form.confirm) {
-      showMsg('error', 'Passwords do not match.');
+      showToast({ type: 'error', title: 'Passwords Do Not Match', message: 'Please make sure both passwords are identical.' });
       return;
     }
     if (form.password.length < 6) {
-      showMsg('error', 'Password must be at least 6 characters long.');
+      showToast({ type: 'error', title: 'Password Too Short', message: 'Password must be at least 6 characters long.' });
       return;
     }
 
     setLoading(true);
     try {
       await register(form.name, form.email, form.password, form.phone);
-      navigate('/login', { state: { message: 'Registration Successful! Please log in.' } });
+      showToast({ type: 'success', title: 'Registration Successful!', message: 'Your account has been created. Please log in to continue.' });
+      setTimeout(() => navigate('/login', { state: { message: 'Account created! Please sign in.' } }), 1500);
     } catch (err) {
-      showMsg('error', err.message || 'Registration failed. Please try again.');
+      const errMsg = err.message || '';
+      if (errMsg.toLowerCase().includes('already registered') || errMsg.toLowerCase().includes('already exists')) {
+        showToast({
+          type: 'error',
+          title: 'Account Already Exists',
+          message: 'This email is already registered. Please sign in or use a different email address.'
+        });
+      } else {
+        showToast({
+          type: 'error',
+          title: 'Registration Failed',
+          message: errMsg || 'Something went wrong. Please try again.'
+        });
+      }
     } finally {
       setLoading(false);
     }
@@ -44,25 +118,6 @@ const Register = () => {
 
   return (
     <>
-      {/* Toast Notification */}
-      {msg.text && (
-        <div style={{
-          position: 'fixed', top: '1.5rem', right: '1.5rem', zIndex: 9999,
-          padding: '1rem 1.5rem', borderRadius: '10px',
-          background: msg.type === 'success' ? 'rgba(16,185,129,0.15)' : 'rgba(239,68,68,0.15)',
-          border: `1px solid ${msg.type === 'success' ? 'rgba(16,185,129,0.4)' : 'rgba(239,68,68,0.4)'}`,
-          color: msg.type === 'success' ? 'var(--success)' : 'var(--danger)',
-          display: 'flex', alignItems: 'center', gap: '0.75rem',
-          backdropFilter: 'blur(12px)', boxShadow: '0 8px 32px rgba(0,0,0,0.3)', maxWidth: '380px'
-        }}>
-          {msg.type === 'success' ? <CheckCircle size={18} /> : <AlertCircle size={18} />}
-          <span style={{ fontSize: '0.9rem', flex: 1 }}>{msg.text}</span>
-          <button onClick={() => setMsg({ type: '', text: '' })} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit' }}>
-            <X size={16} />
-          </button>
-        </div>
-      )}
-
       <div style={{ minHeight: 'calc(100vh - 73px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
         <div style={{ width: '100%', maxWidth: '480px' }}>
           <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
@@ -71,6 +126,20 @@ const Register = () => {
           </div>
 
           <div className="glass-panel" style={{ padding: '2.5rem' }}>
+
+            {/* Official Google Sign-Up Button */}
+            <div
+              id="official-google-register-btn"
+              style={{ width: '100%', display: 'flex', justifyContent: 'center', minHeight: '44px' }}
+            />
+
+            {/* Divider */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', margin: '1.5rem 0' }}>
+              <div style={{ flex: 1, height: '1px', background: 'var(--border-color)' }} />
+              <span style={{ color: 'var(--text-muted)', fontSize: '0.8rem', whiteSpace: 'nowrap' }}>OR SIGN UP WITH EMAIL</span>
+              <div style={{ flex: 1, height: '1px', background: 'var(--border-color)' }} />
+            </div>
+
             <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <label className="form-label" htmlFor="reg-name">Full Name / Business Name *</label>

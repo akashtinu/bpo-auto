@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
 import {
   Menu, X, LogOut, LayoutDashboard, User,
-  Linkedin, Instagram, Mail, ShoppingCart, Search
+  Linkedin, Instagram, Mail, ShoppingCart, Search, ArrowRight
 } from 'lucide-react';
 import bpoLogo from "../assets/cropped-BPO-logo-e1750057560274 (1).webp";
 
@@ -87,18 +87,8 @@ const Navbar = () => {
         <div className="container nav-wrapper">
           {/* Logo */}
           <Link to="/" className="nav-logo" onClick={() => setMobileMenuOpen(false)}>
-            {/* <div className="logo-icon">
-              <svg viewBox="0 0 48 48" width="42" height="42" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M24 4L4 20h6v20h10V30h8v10h10V20h6L24 4z" fill="var(--primary)" stroke="var(--text-bright)" strokeWidth="1.5"/>
-                <rect x="18" y="16" width="5" height="6" rx="1" fill="var(--text-bright)" opacity="0.85"/>
-                <rect x="25" y="16" width="5" height="6" rx="1" fill="var(--text-bright)" opacity="0.85"/>
-              </svg>
-            </div> */}
-            {/* <div className="logo-text">
-              <span className="logo-bpo">BPO</span>
-              <span className="logo-acceptor">Acceptor</span>
-            </div> */}
-             <img src={bpoLogo} alt="BPO Auto logo" style={{ filter: 'brightness(1.3) contrast(1.1)' }} />
+           
+             <img src={bpoLogo} alt="BPO Auto logo" width="180" height="45" style={{ height: '45px', width: 'auto', objectFit: 'contain', filter: 'brightness(2)' }} />
           </Link>
 
           {/* Desktop Navigation Links */}
@@ -118,20 +108,14 @@ const Navbar = () => {
 
           {/* Right Actions (Cart + Search) */}
           <div className="nav-actions">
-            <Link to="/cart" className="nav-action-icon cart-icon" aria-label="Cart">
+            <Link to="/cart" className="nav-action-icon cart-icon" aria-label="Cart" onClick={handleNavLinkClick}>
               <ShoppingCart size={20} />
-              {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+              {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}  
             </Link>
-            {/* <button
-              className="nav-action-icon"
-              onClick={() => setShowSearch(!showSearch)}
-              aria-label="Search"
-            >
-              <Search size={20} />
-            </button> */}
+            
           </div>
 
-          <Link to="/cart" className="mobile-cart-action" aria-label="Cart">
+          <Link to="/cart" className="mobile-cart-action" aria-label="Cart" onClick={handleNavLinkClick}>
             <ShoppingCart size={20} />
             {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
           </Link>
@@ -142,25 +126,7 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Search Bar Dropdown */}
-        {/* {showSearch && (
-          <div className="search-dropdown">
-            <div className="container" style={{ display: 'flex', gap: '0.75rem' }}>
-              <input
-                type="text"
-                className="form-input"
-                placeholder="Search pages, portals, FAQs..."
-                value={searchQuery}
-                onChange={e => setSearchQuery(e.target.value)}
-                autoFocus
-                style={{ flex: 1 }}
-              />
-              <button onClick={() => setShowSearch(false)} className="btn btn-secondary" style={{ padding: '0.5rem 1rem' }}>
-                <X size={16} />
-              </button>
-            </div>
-          </div>
-        )} */}
+       
       </nav>
 
       {/* ─── Mobile Menu ─── */}
@@ -181,13 +147,10 @@ const Navbar = () => {
 
           {/* Mobile Social Icons */}
           <div style={{ display: 'flex', gap: '1rem', padding: '0.5rem 0' }}>
-            <a href="https://www.linkedin.com/company/bpo-auto-accept" target="_blank" rel="noopener noreferrer" className="social-icon"><Linkedin size={18} /></a>
-            <a href="https://www.instagram.com/bpoautoaccept?igsh=aXhic3h5N3NkdTQ4" target="_blank" rel="noopener noreferrer" className="social-icon"><Instagram size={18} /></a>
-            <a href="mailto:info@autoacceptbpo.com" className="social-icon"><Mail size={18} /></a>
-            {/* <Link to="/cart" className="social-icon mobile-cart-icon" aria-label="Cart">
-              <ShoppingCart size={18} />
-              {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
-            </Link> */}
+            <a href="https://www.linkedin.com/company/bpo-auto-accept" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LinkedIn"><Linkedin size={18} /></a>
+            <a href="https://www.instagram.com/bpoautoaccept?igsh=aXhic3h5N3NkdTQ4" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Instagram"><Instagram size={18} /></a>
+            <a href="mailto:info@autoacceptbpo.com" className="social-icon" aria-label="Email"><Mail size={18} /></a>
+            
             
           </div>
 

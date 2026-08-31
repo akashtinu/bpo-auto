@@ -1,28 +1,87 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { LogIn, Eye, EyeOff, AlertCircle, X, CheckCircle } from 'lucide-react';
+import { LogIn, Eye, EyeOff } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import { useToast } from '../components/Toast';
+
+const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID || '286428664456-8qnci6bohofe5cdja5kpnc7gq3v0baj5.apps.googleusercontent.com';
 
 const Login = () => {
-  const { login } = useAuth();
+  const { login, loginWithGoogle } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const [form, setForm] = useState({ email: '', password: '' });
   const [showPass, setShowPass] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [msg, setMsg] = useState({ type: '', text: '' });
+  const { showToast } = useToast();
 
-  const showMsg = (type, text) => {
-    setMsg({ type, text });
-    setTimeout(() => setMsg({ type: '', text: '' }), 5000);
-  };
+  // Use a ref so Google's stored callback always calls the latest version
+  const handleGoogleSuccessRef = useRef(null);
 
   useEffect(() => {
-    // Show success message passed from Register page via React Router state
     if (location.state?.message) {
-      showMsg('success', location.state.message);
-      // Clear the state so it doesn't show again on refresh
+      showToast({ type: 'success', title: 'Registration Successful!', message: location.state.message });
       window.history.replaceState({}, document.title);
+    }
+  }, []);
+
+  // Keep ref up to date on every render
+  handleGoogleSuccessRef.current = async (response) => {
+    setLoading(true);
+    try {
+      const user = await loginWithGoogle(response.credential, 'login');
+      showToast({ type: 'success', title: 'Login Successful!', message: 'Welcome back! Redirecting to your dashboard...' });
+      setTimeout(() => navigate(user.role === 'admin' ? '/admin' : '/dashboard'), 1000);
+    } catch (err) {
+      setLoading(false);
+      showToast({ type: 'error', title: 'Google Login Failed', message: err.message || 'Google login failed. Please sign up first.' });
+    }
+  };
+
+  // Initialize official Google Identity Services button once on mount
+  useEffect(() => {
+    // Stable wrapper that always calls the latest ref
+    const stableCallback = (response) => {
+      if (handleGoogleSuccessRef.current) {
+        handleGoogleSuccessRef.current(response);
+      }
+    };
+
+    const initGoogle = () => {
+      if (window.google?.accounts?.id) {
+        window.google.accounts.id.initialize({
+          client_id: GOOGLE_CLIENT_ID,
+          callback: stableCallback,
+          auto_select: false,
+          cancel_on_tap_outside: true
+        });
+
+        const btnContainer = document.getElementById('official-google-btn');
+        if (btnContainer) {
+          btnContainer.innerHTML = '';
+          window.google.accounts.id.renderButton(btnContainer, {
+            theme: 'outline',
+            size: 'large',
+            type: 'standard',
+            shape: 'rectangular',
+            text: 'signin_with',
+            logo_alignment: 'left',
+            width: Math.max(200, Math.min(380, window.innerWidth - 80))
+          });
+        }
+      }
+    };
+
+    if (window.google?.accounts?.id) {
+      initGoogle();
+    } else {
+      const interval = setInterval(() => {
+        if (window.google?.accounts?.id) {
+          initGoogle();
+          clearInterval(interval);
+        }
+      }, 250);
+      return () => clearInterval(interval);
     }
   }, []);
 
@@ -31,12 +90,31 @@ const Login = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     setLoading(true);
-    setMsg({ type: '', text: '' });
     try {
       const user = await login(form.email, form.password);
-      navigate(user.role === 'admin' ? '/admin' : '/dashboard');
+      showToast({ type: 'success', title: 'Login Successful!', message: 'Welcome back! Redirecting to your dashboard...' });
+      setTimeout(() => navigate(user.role === 'admin' ? '/admin' : '/dashboard'), 1000);
     } catch (err) {
-      showMsg('error', err.message || 'Login failed. Please check your credentials.');
+      const errMsg = err.message || '';
+      if (errMsg.toLowerCase().includes('no account') || errMsg.toLowerCase().includes('not found')) {
+        showToast({
+          type: 'error',
+          title: 'Account Not Found',
+          message: 'No account registered with this email address. Please check your email or sign up.'
+        });
+      } else if (errMsg.toLowerCase().includes('incorrect password') || errMsg.toLowerCase().includes('password')) {
+        showToast({
+          type: 'error',
+          title: 'Incorrect Password',
+          message: 'The password you entered is incorrect. Please verify your password and try again.'
+        });
+      } else {
+        showToast({
+          type: 'error',
+          title: 'Login Failed',
+          message: errMsg || 'Please check your email and password.'
+        });
+      }
     } finally {
       setLoading(false);
     }
@@ -44,25 +122,6 @@ const Login = () => {
 
   return (
     <>
-      {/* Toast Notification */}
-      {msg.text && (
-        <div style={{
-          position: 'fixed', top: '1.5rem', right: '1.5rem', zIndex: 9999,
-          padding: '1rem 1.5rem', borderRadius: '10px',
-          background: msg.type === 'success' ? 'rgba(16,185,129,0.15)' : 'rgba(239,68,68,0.15)',
-          border: `1px solid ${msg.type === 'success' ? 'rgba(16,185,129,0.4)' : 'rgba(239,68,68,0.4)'}`,
-          color: msg.type === 'success' ? 'var(--success)' : 'var(--danger)',
-          display: 'flex', alignItems: 'center', gap: '0.75rem',
-          backdropFilter: 'blur(12px)', boxShadow: '0 8px 32px rgba(0,0,0,0.3)', maxWidth: '380px'
-        }}>
-          {msg.type === 'success' ? <CheckCircle size={18} /> : <AlertCircle size={18} />}
-          <span style={{ fontSize: '0.9rem', flex: 1 }}>{msg.text}</span>
-          <button onClick={() => setMsg({ type: '', text: '' })} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit' }}>
-            <X size={16} />
-          </button>
-        </div>
-      )}
-
       <div style={{ minHeight: 'calc(100vh - 73px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
         <div style={{ width: '100%', maxWidth: '440px' }}>
           <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
@@ -71,6 +130,20 @@ const Login = () => {
           </div>
 
           <div className="glass-panel" style={{ padding: '2.5rem' }}>
+
+            {/* Official Google Sign-In Button */}
+            <div
+              id="official-google-btn"
+              style={{ width: '100%', display: 'flex', justifyContent: 'center', minHeight: '44px' }}
+            />
+
+            {/* Divider */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', margin: '1.5rem 0' }}>
+              <div style={{ flex: 1, height: '1px', background: 'var(--border-color)' }} />
+              <span style={{ color: 'var(--text-muted)', fontSize: '0.8rem', whiteSpace: 'nowrap' }}>OR CONTINUE WITH EMAIL</span>
+              <div style={{ flex: 1, height: '1px', background: 'var(--border-color)' }} />
+            </div>
+
             <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <label className="form-label" htmlFor="login-email">Email Address</label>
@@ -126,13 +199,8 @@ const Login = () => {
             <div style={{ textAlign: 'center', marginTop: '1.75rem', paddingTop: '1.5rem', borderTop: '1px solid var(--border-color)' }}>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
                 Don't have an account?{' '}
-                <Link to="/register" style={{ color: 'var(--primary)', fontWeight: 600 }}>Get Started</Link>
+                <Link to="/register" style={{ color: 'var(--primary)', fontWeight: 600 }}>Sign Up</Link>
               </p>
-            </div>
-
-            <div style={{ marginTop: '1.25rem', background: 'rgba(4,146,194,0.08)', borderRadius: '8px', padding: '0.85rem 1rem', fontSize: '0.82rem', color: 'var(--text-muted)', textAlign: 'center' }}>
-              <strong style={{ color: 'var(--primary)' }}>Demo credentials:</strong><br />
-              Admin: admin@bpoautoaccept.com / admin123
             </div>
           </div>
         </div>
