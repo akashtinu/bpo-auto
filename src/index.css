@@ -263,13 +263,18 @@ html, body {
 
 /* ── Site Header ── */
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 100;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 2000;
 }
 
 /* Top Bar */
 .top-bar {
+  position: relative;
+  z-index: 2001;
   background: linear-gradient(135deg, #1a3a8f 0%, #2452c2 100%);
   padding: 0.5rem 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -368,12 +373,15 @@ html, body {
 
 /* Main Navbar */
 .main-navbar {
+  position: relative;
+  z-index: 2000;
   background: rgba(6, 11, 19, 0.92);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   border-bottom: 1px solid var(--border-color);
   padding: 0;
   transition: var(--transition-smooth);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
 }
 
 .nav-wrapper {
@@ -1284,10 +1292,11 @@ html, body {
   left: 0;
   height: 3px;
   background: linear-gradient(90deg, var(--primary) 0%, var(--primary-hover) 50%, var(--success) 100%);
-  z-index: 10001;
+  z-index: 1500;
   width: 0%;
   transition: width 0.1s ease-out;
   box-shadow: 0 0 8px rgba(4, 146, 194, 0.8);
+  pointer-events: none;
 }
 
 /* Glassmorphic Shimmer Shine Sweep on Hover */
