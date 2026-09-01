@@ -172,7 +172,7 @@ select.form-input option {
 /* Smooth page transitions */
 main {
   animation: fadeIn 0.3s ease-out;
-  padding-top: 112px;
+  padding-top:150px;
 }
 
 .scroll-rotating-image {
