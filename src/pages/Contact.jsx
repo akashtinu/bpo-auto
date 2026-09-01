@@ -35,11 +35,18 @@ const Contact = () => {
         </p>
       </section>
 
-      <section className="reveal" style={{ marginBottom: '4rem',display:'flex',justifyContent:'center' }}>
-        <div className="contact-layout " style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '4rem', alignItems: 'start',     maxWidth: '1200px',}}>
+      <section className="reveal" style={{ marginBottom: '4rem', display: 'flex', justifyContent: 'center' }}>
+        <div className="contact-layout" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.2fr) minmax(0, 1fr)', gap: '4rem', alignItems: 'start', maxWidth: '1200px', width: '100%' }}>
           
           {/* Contact Form */}
-          <div className="contact-form-column glass-panel reveal-left delay-1" style={{ padding: '2.5rem', position: 'sticky', top: '100px' }}>
+          <div>
+          <div
+            className="contact-form-column glass-panel reveal-left delay-1"
+            style={{
+              padding: '2.5rem',
+              height: 'fit-content'
+            }}
+          >
             {success ? (
               <div style={{ textAlign: 'center', padding: '2rem' }}>
                 <CheckCircle size={56} style={{ color: 'var(--success)', marginBottom: '1.25rem', margin: '0 auto' }} />
@@ -87,8 +94,23 @@ const Contact = () => {
                 </button>
               </form>
             )}
+
+            
           </div>
 
+          <div>
+              <h2 style={{ fontSize: '1.75rem', color: 'var(--text-main)', marginBottom: '1rem' }}>Let's Grow Your Business Together</h2>
+              <p style={{ marginBottom: '1rem' }}>
+                Looking for a trusted BPO Auto Acceptance solution? Our cloud-based platform automatically monitors supported vendor portals and captures eligible Broker Price Opinion (BPO) and appraisal orders based on your customized preferences—helping you secure more assignments while reducing manual effort.
+              </p>
+              <p style={{ marginBottom: '1rem' }}>
+                Whether you’re just getting started with BPO automation or want to optimize your existing workflow, our experienced team is ready to help you improve efficiency, maximize your earning potential, and stay competitive in the real estate valuation industry.
+              </p>
+              <p>
+                Contact us today to discover how our intelligent BPO Auto Acceptance solutions can help you capture more orders, save valuable time, and grow your business with confidence.
+              </p>
+            </div>
+</div>
           {/* Content Block */}
           <div  style={{ display: 'flex', flexDirection: 'column', gap: '2rem', color: 'var(--text-muted)', lineHeight: '1.8' }}>
             <div>
@@ -111,7 +133,7 @@ const Contact = () => {
               </ul>
             </div>
 
-            <div>
+            {/* <div>
               <h2 style={{ fontSize: '1.75rem', color: 'var(--text-main)', marginBottom: '1rem' }}>Let's Grow Your Business Together</h2>
               <p style={{ marginBottom: '1rem' }}>
                 Looking for a trusted BPO Auto Acceptance solution? Our cloud-based platform automatically monitors supported vendor portals and captures eligible Broker Price Opinion (BPO) and appraisal orders based on your customized preferences—helping you secure more assignments while reducing manual effort.
@@ -122,7 +144,7 @@ const Contact = () => {
               <p>
                 Contact us today to discover how our intelligent BPO Auto Acceptance solutions can help you capture more orders, save valuable time, and grow your business with confidence.
               </p>
-            </div>
+            </div> */}
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginTop: '1rem' }}>
               <div className="glass-card" style={{ padding: '1.5rem' }}>
