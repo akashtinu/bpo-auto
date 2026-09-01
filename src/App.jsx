@@ -21,6 +21,7 @@ import Cart from './pages/Cart';
 import RefundPolicy from './pages/RefundPolicy';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsConditions from './pages/TermsConditions'
+import Checkout from  './pages/Checkout'
 
 // Auth Pages
 import Login from './pages/Login';
@@ -116,6 +117,7 @@ function App() {
                   <Route path="/refund-policy" element={<PublicLayout><RefundPolicy /></PublicLayout>} />
                   <Route path="/privacy-policy" element={<PublicLayout><PrivacyPolicy /></PublicLayout>} />
                   <Route path="/terms-conditions" element={<PublicLayout><TermsConditions /></PublicLayout>} />
+                  <Route path="/checkout" element={<PublicLayout><Checkout /></PublicLayout>} />
 
                   {/* ── Guest-only Routes (redirect if already logged in) ── */}
                   <Route path="/login" element={<GuestRoute><PublicLayout><Login /></PublicLayout></GuestRoute>} />

@@ -131,7 +131,7 @@ const Cart = () => {
               <span style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--primary)' }}>${cartTotal.toFixed(2)}</span>
             </div>
             
-            <Link to="/register" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center', padding: '1rem', fontSize: '1.1rem', marginBottom: '1rem' }}>
+            <Link to="/checkout" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center', padding: '1rem', fontSize: '1.1rem', marginBottom: '1rem' }}>
               Proceed to Checkout
             </Link>
 

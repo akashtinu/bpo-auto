@@ -109,10 +109,10 @@ const Pricing = () => {
       </section>
 
       {/* Product Grid */}
-      <section className="container reveal" style={{ marginBottom: '5rem' }}>
+      <section className="container " style={{ marginBottom: '5rem' }}>
         <div className="pricing-grid">
           {getSortedProducts().map((product, idx) => (
-            <div key={product.id} className={`product-card reveal-hover-card reveal-scale delay-${(idx % 4) + 1}`} style={{ position: 'relative', display: 'flex', flexDirection: 'column' ,borderRadius:'12px'}}>
+            <div key={product.id} className="product-card reveal-hover-card" style={{ position: 'relative', display: 'flex', flexDirection: 'column' ,borderRadius:'12px'}}>
               {product.sale && (
                 <div style={{
                   position: 'absolute', top: '10px', left: '10px', 

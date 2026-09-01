@@ -657,13 +657,7 @@ html, body {
 
 
 
-/* .mobile-cart{
-display: none;
- align-items: 'center';
-  gap: '0.5rem';
-   opacity: 0.95 ;
-} */
-/* Hero Section */
+
 .hero-section {
   padding: 6rem 0 4rem;
   text-align: center;
@@ -1428,4 +1422,70 @@ display: none;
   box-shadow: var(--glow-shadow);
 }
 
+/* ─── Typing Cursor Blink Animation ─── */
+.typing-cursor {
+  display: inline-block;
+  margin-left: 2px;
+  color: var(--primary);
+  font-weight: 300;
+  animation: blink-cursor 0.75s step-end infinite;
+  -webkit-text-fill-color: var(--primary);
+}
 
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+
+
+
+
+
+/* Add these to your existing CSS or create a separate checkout.css */
+
+/* Checkout-specific styles */
+.simulate-order-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.billing-form .form-input.error {
+  border-color: var(--danger) !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15) !important;
+}
+
+.billing-form .form-input.error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25) !important;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .simulate-order-layout {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .glass-panel {
+    padding: 1.25rem !important;
+  }
+  
+  .container {
+    padding: 0 0.75rem !important;
+  }
+}
+
+/* Radio and Checkbox styling consistency */
+input[type="radio"],
+input[type="checkbox"] {
+  cursor: pointer;
+}
+
+/* Payment method hover effect */
+.payment-method-option:hover {
+  background: rgba(4, 146, 194, 0.08);
+  border-color: var(--border-color-hover);
+}

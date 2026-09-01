@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Shield, Zap, Sliders, Layers, Bell, CheckCircle,
@@ -13,6 +13,43 @@ import estreetImage from '../assets/estreet-300x300-1.webp';
 import proteckImage from '../assets/proteck-300x300-ezgif.com-png-to-webp-converter.webp';
 import singleSourceImage from '../assets/single-source.webp';
 import xomeImage from '../assets/xome-300x300-1.webp';
+
+/* ─── Typing Text Component ─── */
+const TypingText = ({ words, typingSpeed = 100, deletingSpeed = 60, pauseMs = 1800 }) => {
+  const [displayed, setDisplayed] = useState('');
+  const [wordIndex, setWordIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const current = words[wordIndex % words.length];
+
+    let timeout;
+    if (!isDeleting && displayed === current) {
+      // Pause at full word then start deleting
+      timeout = setTimeout(() => setIsDeleting(true), pauseMs);
+    } else if (isDeleting && displayed === '') {
+      // Move to next word
+      setIsDeleting(false);
+      setWordIndex(i => (i + 1) % words.length);
+    } else {
+      const speed = isDeleting ? deletingSpeed : typingSpeed;
+      timeout = setTimeout(() => {
+        setDisplayed(isDeleting
+          ? current.slice(0, displayed.length - 1)
+          : current.slice(0, displayed.length + 1)
+        );
+      }, speed);
+    }
+    return () => clearTimeout(timeout);
+  }, [displayed, isDeleting, wordIndex, words, typingSpeed, deletingSpeed, pauseMs]);
+
+  return (
+    <span>
+      {displayed}
+      <span className="typing-cursor">|</span>
+    </span>
+  );
+};
 
 const Home = () => {
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
@@ -73,8 +110,11 @@ const Home = () => {
               
               <Zap size={14} style={{ marginRight: '4px' }} /> One solution for BPO order capture
             </div>
-            <h1 className="hero-title" style={{ fontSize: '3.2rem', marginBottom: '1rem', lineHeight: 1.1 }}>
-              BPO | Auto Acceptance <span style={{ color: 'var(--primary)', background: 'none', WebkitTextFillColor: 'initial' }}>BPO Services</span>
+            <h1 className="hero-title" style={{ fontSize: '3.2rem', marginBottom: '1rem', lineHeight: 1.2 }}>
+              Smart Auto{' '}
+              <span style={{ color: 'var(--primary)', background: 'none', WebkitTextFillColor: 'initial', display: 'inline-block', minWidth: '2ch' }}>
+                <TypingText words={['Solutions', 'AI-Powered', 'Acceptance', 'Automation']} />
+              </span>
             </h1>
             <p className="hero-subtitle" style={{ fontSize: '1.2rem', margin: '0 0 2rem 0', color: 'var(--text-main)', lineHeight: 1.6 }}>
               Streamline your business with expert Auto Acceptance BPO services. Fast, reliable, and cost-effective outsourcing solutions tailored for you.
