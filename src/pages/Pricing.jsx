@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ShoppingCart } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import { api } from '../utils/api';
 import rrrImage from '../assets/RRR-300x300-1.webp';
 import classValuationImage from '../assets/Class-Valuation-300x300-1.webp';
 import clearCapitalImage from '../assets/clear-captial-300x300-1.webp';
@@ -23,11 +24,9 @@ import Valuation from '../assets/valuation-connect-300x140.jpg';
 import Valuenet from '../assets/valunet-logo-300x300.webp';
 import Voxtur from '../assets/Solidify-300x300.jpg';
 
-Think
-
-const PRODUCTS = [
+const FALLBACK_PRODUCTS = [
   { id: 1, name: 'AMO BPO Auto accept', price: 75.00, image: amo },
-  { id: 2, name: 'Ascribe BPO Auto accept', price: 49.00, originalPrice: 75.00, sale: true ,image: Ascribe},
+  { id: 2, name: 'Ascribe BPO Auto accept', price: 49.00, originalPrice: 75.00, sale: true, image: Ascribe },
   { id: 3, name: 'AVM BPO auto accept', price: 75.00, image: amv },
   { id: 4, name: 'Class Valuation BPO auto accept', price: 75.00, image: classValuationImage },
   { id: 5, name: 'Clear Capital BPO auto accept', price: 75.00, image: clearCapitalImage },
@@ -49,10 +48,52 @@ const PRODUCTS = [
   { id: 21, name: 'Xome BPO auto accept', price: 75.00, image: xomeImage },
 ];
 
+const PRODUCT_IMAGES = [amo, Ascribe, amv, classValuationImage, clearCapitalImage, Consolidated, estreetImage, firstamerican, lres, rrrImage, proteckImage, Pilot, Redbell, rrrImage, singleSourceImage, Solidifi, Think, Valuation, Valuenet, Voxtur, xomeImage];
+
+const normalizeProductImage = (value) => {
+  if (!value) return value;
+  if (value.startsWith('http://') || value.startsWith('https://')) return value;
+  if (value.startsWith('/uploads/')) return `http://localhost:8000${value}`;
+  return value;
+};
+
+const getProductImage = (product) => {
+  if (product?.image_url) return normalizeProductImage(product.image_url);
+  if (product?.image) return normalizeProductImage(product.image);
+  const index = Number(product?.id || 1) - 1;
+  return PRODUCT_IMAGES[(index + PRODUCT_IMAGES.length) % PRODUCT_IMAGES.length] || PRODUCT_IMAGES[0];
+};
+
 const Pricing = () => {
   const [sortBy, setSortBy] = useState('default');
+  const [products, setProducts] = useState(FALLBACK_PRODUCTS);
   const navigate = useNavigate();
   const { addToCart } = useCart();
+
+  useEffect(() => {
+    const loadProducts = async () => {
+      try {
+        const res = await api.get('/api/products');
+        if (Array.isArray(res.products) && res.products.length > 0) {
+          const mappedProducts = res.products.map(product => ({
+            ...product,
+            id: Number(product.id),
+            price: Number(product.price || 0),
+            originalPrice: product.original_price ? Number(product.original_price) : null,
+            sale: Boolean(product.sale),
+            image: getProductImage(product)
+          }));
+          setProducts(mappedProducts);
+        } else {
+          setProducts(FALLBACK_PRODUCTS);
+        }
+      } catch (error) {
+        setProducts(FALLBACK_PRODUCTS);
+      }
+    };
+
+    loadProducts();
+  }, []);
 
   const handleAddToCart = (e, product) => {
     e.preventDefault();
@@ -60,24 +101,18 @@ const Pricing = () => {
     navigate('/cart');
   };
 
-  const handleCartLinkClick = () => {
-    setMobileMenuOpen(false);
-    window.scrollTo(0, 0);
-  };
-
   const getSortedProducts = () => {
-    let sorted = [...PRODUCTS];
+    let sorted = [...products];
     switch (sortBy) {
       case 'price-low':
-        sorted.sort((a, b) => a.price - b.price);
+        sorted.sort((a, b) => Number(a.price) - Number(b.price));
         break;
       case 'price-high':
-        sorted.sort((a, b) => b.price - a.price);
+        sorted.sort((a, b) => Number(b.price) - Number(a.price));
         break;
       case 'popularity':
       case 'latest':
       default:
-        // Default sorting
         break;
     }
     return sorted;
@@ -85,17 +120,15 @@ const Pricing = () => {
 
   return (
     <div style={{ paddingBottom: '5rem', minHeight: '100vh' }}>
-      {/* Hero */}
       <section className="hero-section container" style={{ paddingBottom: '2rem' }}>
         <h1 className="hero-title" style={{ fontSize: '3rem' }}>Pricing</h1>
       </section>
 
-      {/* Catalog Header */}
       <section className="container" style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
-        <p style={{ color: 'var(--text-muted)' }}>Showing all {PRODUCTS.length} results</p>
-        
-        <select 
-          className="form-input" 
+        <p style={{ color: 'var(--text-muted)' }}>Showing all {products.length} results</p>
+
+        <select
+          className="form-input"
           style={{ width: 'auto', display: 'inline-block', padding: '0.5rem 2.5rem 0.5rem 1rem' }}
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value)}
@@ -108,35 +141,36 @@ const Pricing = () => {
         </select>
       </section>
 
-      {/* Product Grid */}
       <section className="container " style={{ marginBottom: '5rem' }}>
         <div className="pricing-grid">
-          {getSortedProducts().map((product, idx) => (
-            <div key={product.id} className="product-card reveal-hover-card" style={{ position: 'relative', display: 'flex', flexDirection: 'column' ,borderRadius:'12px'}}>
+          {getSortedProducts().map((product) => (
+            <div key={product.id} className="product-card reveal-hover-card" style={{ position: 'relative', display: 'flex', flexDirection: 'column', borderRadius: '12px' }}>
               {product.sale && (
                 <div style={{
-                  position: 'absolute', top: '10px', left: '10px', 
-                  background: 'var(--primary)', color: '#fff', 
+                  position: 'absolute', top: '10px', left: '10px',
+                  background: 'var(--primary)', color: '#fff',
                   padding: '4px 8px', borderRadius: '4px', fontSize: '0.8rem', fontWeight: 'bold', zIndex: 2
                 }}>
                   Sale!
                 </div>
               )}
               <div className="product-image-container" style={{ position: 'relative', overflow: 'hidden', borderRadius: '12px 12px 0 0', background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border-color)', borderBottom: 'none', aspectRatio: '1/1', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <img 
-                  src={product.image} 
-                  alt={product.name} 
+                <img
+                  src={product.image || getProductImage(product)}
+                  alt={product.name}
                   width="300"
                   height="300"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.3s ease' }} 
+                  onError={(e) => {
+                    e.currentTarget.src = getProductImage({ id: product.id });
+                  }}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.3s ease' }}
                   className="product-img"
                 />
-                
-                {/* Hover Add to Cart Button */}
+
                 <div className="add-to-cart-overlay">
-                  <button 
+                  <button
                     onClick={(e) => handleAddToCart(e, product)}
-                    className="btn btn-primary" 
+                    className="btn btn-primary"
                     style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', opacity: 0.95 }}
                   >
                     <ShoppingCart size={18} />
@@ -144,30 +178,26 @@ const Pricing = () => {
                   </button>
                 </div>
               </div>
-              
+
               <div style={{ padding: '1.5rem', background: 'rgba(255,255,255,0.02)', border: '1px solid var(--border-color)', borderRadius: '0 0 12px 12px', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
                 <h3 style={{ fontSize: '1.1rem', marginBottom: '0.75rem', color: 'var(--text-main)', flexGrow: 1 }}>{product.name}</h3>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: 'auto' ,justifyContent:'center'}}>
-                  {product.sale && (
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: 'auto', justifyContent: 'center' }}>
+                  {product.sale && product.originalPrice && (
                     <span style={{ color: 'var(--text-muted)', textDecoration: 'line-through', fontSize: '0.9rem' }}>
-                      ${product.originalPrice.toFixed(2)}
+                      ${Number(product.originalPrice).toFixed(2)}
                     </span>
                   )}
-                  <span style={{ color: product.sale ? 'var(--primary)' : 'var(--text-main)', fontWeight: 'bold', fontSize: '1.2rem' ,textAlign:'center'}}>
-                    ${product.price.toFixed(2)}
+                  <span style={{ color: product.sale ? 'var(--primary)' : 'var(--text-main)', fontWeight: 'bold', fontSize: '1.2rem', textAlign: 'center' }}>
+                    ${Number(product.price || 0).toFixed(2)}
                   </span>
- </div>
-                  <button 
-                    onClick={(e) => handleAddToCart(e, product)}
-                    className="mobile-cart"
-                    
-                  >
-                    <ShoppingCart size={18} />
-                    Add to cart
-                  </button>
-
-
-               
+                </div>
+                <button
+                  onClick={(e) => handleAddToCart(e, product)}
+                  className="mobile-cart"
+                >
+                  <ShoppingCart size={18} />
+                  Add to cart
+                </button>
               </div>
             </div>
           ))}
@@ -186,7 +216,7 @@ const Pricing = () => {
         .product-card:hover .product-img {
           transform: scale(1.05);
         }
-        
+
         .add-to-cart-overlay {
           position: absolute;
           inset: 0;
@@ -198,7 +228,7 @@ const Pricing = () => {
           transition: opacity 0.2s ease;
           backdrop-filter: blur(2px);
         }
-        
+
         .product-image-container:hover .add-to-cart-overlay {
           opacity: 1;
         }

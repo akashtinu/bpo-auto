@@ -2,8 +2,9 @@
 
 export const api = {
   async request(path, options = {}) {
+    const isFormData = options.body instanceof FormData;
     const defaultHeaders = {
-      'Content-Type': 'application/json',
+      ...(isFormData ? {} : { 'Content-Type': 'application/json' }),
       'X-Requested-With': 'XMLHttpRequest'
     };
 
@@ -39,6 +40,14 @@ export const api = {
     return this.request(path, {
       method: 'POST',
       body: JSON.stringify(body),
+      headers
+    });
+  },
+
+  postForm(path, formData, headers = {}) {
+    return this.request(path, {
+      method: 'POST',
+      body: formData,
       headers
     });
   },
