@@ -33,7 +33,19 @@ const CheckoutForm = () => {
 
   const capturePayPalOrder = async (data) => {
     try {
-      await api.post('/api/paypal/capture', { order_id: data.orderID });
+      await api.post('/api/paypal/capture', {
+        order_id: data.orderID,
+        items: cartItems.map(item => ({ id: item.id, quantity: item.quantity })),
+        billing: {
+          firstName: formData.firstName,
+          townCity: formData.townCity,
+          postcode: formData.postcode,
+          phone: formData.phone,
+          email: formData.email,
+          orderNotes: formData.orderNotes,
+        },
+        order_notes: formData.orderNotes,
+      });
       clearCart();
       setPaymentMessage({ type: 'success', text: 'Payment completed successfully. Thank you for your order.' });
     } catch (error) {

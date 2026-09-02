@@ -31,7 +31,7 @@ const Contact = () => {
       <section className="hero-section container reveal-fade" style={{ paddingBottom: '3rem' }}>
         <h1 className="hero-title reveal-fade delay-1" style={{ fontSize: '3rem' }}>Contact BPO Auto Accept</h1>
         <p className="hero-subtitle reveal-fade delay-2">
-          Get in Touch with Our BPO Auto Acceptance Experts
+       Talk to Our BPO Auto Acceptance Team
         </p>
       </section>
 
@@ -99,15 +99,15 @@ const Contact = () => {
           </div>
 
           <div>
-              <h2 style={{ fontSize: '1.75rem', color: 'var(--text-main)', marginBottom: '1rem' }}>Let's Grow Your Business Together</h2>
+              <h2 style={{ fontSize: '1.75rem', color: 'var(--text-main)', marginBottom: '1rem' }}>Let's Take Your Business Further</h2>
               <p style={{ marginBottom: '1rem' }}>
-                Looking for a trusted BPO Auto Acceptance solution? Our cloud-based platform automatically monitors supported vendor portals and captures eligible Broker Price Opinion (BPO) and appraisal orders based on your customized preferences—helping you secure more assignments while reducing manual effort.
+Looking for a BPO Auto Acceptance solution you can rely on? Our cloud-based platform automatically watches supported vendor portals and captures eligible Broker Price Opinion (BPO) and appraisal orders based on your custom preferences — helping you win more assignments with far less manual effort.
               </p>
               <p style={{ marginBottom: '1rem' }}>
-                Whether you’re just getting started with BPO automation or want to optimize your existing workflow, our experienced team is ready to help you improve efficiency, maximize your earning potential, and stay competitive in the real estate valuation industry.
+Whether you're just starting out with BPO automation or looking to fine-tune your existing workflow, our experienced team is here to help you work more efficiently, earn more, and stay competitive in the real estate valuation space.
               </p>
               <p>
-                Contact us today to discover how our intelligent BPO Auto Acceptance solutions can help you capture more orders, save valuable time, and grow your business with confidence.
+Reach out today to see how our smart BPO Auto Acceptance solutions can help you capture more orders, save valuable time, and grow your business with confidence.
               </p>
             </div>
 </div>
@@ -115,21 +115,21 @@ const Contact = () => {
           <div  style={{ display: 'flex', flexDirection: 'column', gap: '2rem', color: 'var(--text-muted)', lineHeight: '1.8' }}>
             <div>
               <p style={{ marginBottom: '1rem' }}>
-                Need a faster and more efficient way to capture Broker Price Opinion (BPO) and appraisal orders? Our team is here to help. Whether you have questions about our BPO Auto Accept Software, need assistance with setup, or want to learn more about our BPO Order Capture solutions, we’re ready to assist you.
+Looking for a faster, more efficient way to capture Broker Price Opinion (BPO) and appraisal orders? Our team's got you covered. Whether you have questions about our BPO Auto Accept Software, need help getting set up, or want to learn more about our BPO Order Capture solutions, we're here to help.
               </p>
               <p>
-                We are committed to providing fast, reliable, and secure BPO Auto Acceptance services that help real estate professionals, brokers, appraisers, lenders, and valuation companies improve productivity, increase order acceptance rates, and streamline order management.
+We're committed to delivering fast, reliable, and secure BPO Auto Acceptance services that help real estate professionals, brokers, appraisers, lenders, and valuation companies boost productivity, raise acceptance rates, and simplify order management.
               </p>
             </div>
             
             <div>
-              <h2 style={{ fontSize: '1.75rem', color: 'var(--text-main)', marginBottom: '1rem' }}>Why Contact BPO Auto Accept?</h2>
+              <h2 style={{ fontSize: '1.75rem', color: 'var(--text-main)', marginBottom: '1rem' }}>Why Reach Out to BPO Auto Accept?</h2>
               <ul style={{ listStyleType: 'disc', paddingLeft: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                <li>Expert guidance on BPO Auto Acceptance Software</li>
-                <li>Assistance with account setup and configuration</li>
-                <li>Information about BPO Order Capture and real-time monitoring</li>
-                <li>Support for customized order preferences and automation</li>
-                <li>Fast, friendly, and responsive customer service</li>
+                <li>Expert help with our BPO Auto Acceptance Software</li>
+                <li>Support for account setup and configuration</li>
+                <li>Details on BPO Order Capture and real-time monitoring</li>
+                <li>Help customizing order preferences and automation</li>
+                <li>Quick, friendly, and responsive customer service</li>
               </ul>
             </div>
 

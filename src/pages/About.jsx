@@ -64,8 +64,8 @@ const About = () => {
           Expert Broker Price Opinion (BPO) Auto Acceptance
         </h1>
         <p className="hero-subtitle reveal-fade delay-2">
-          At BPO Auto Accept, we specialize in automated Broker Price Opinion (BPO) order acceptance for real estate professionals, appraisers, lenders, and valuation companies.
-        </p>
+         We're a dedicated automation provider, helping appraisers, lenders, real estate agents, and valuation firms capture Broker Price Opinion (BPO) orders without lifting a finger.
+          </p>
       </section>
 
       {/* ─── Mission & Intro Grid ─── */}
@@ -77,22 +77,22 @@ const About = () => {
             <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--text-bright)' }}>About Us</h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', color: 'var(--text-main)', lineHeight: 1.8 }}>
               <p>
-                At BPO Auto Accept, we provide industry-leading BPO Auto Accept Software designed to automate Broker Price Opinion (BPO) and appraisal order acceptance with speed, accuracy, and reliability. Our advanced BPO automation system acts like a dedicated virtual assistant, continuously monitoring vendor portals and instantly capturing eligible orders based on your customized preferences.
+                At BPO Auto Accept, we offer powerful BPO Auto Accept Software built to automate Broker Price Opinion (BPO) and appraisal order acceptance with speed, precision, and dependability. Acting like a dedicated virtual assistant, our automation engine constantly watches vendor portals and instantly grabs eligible orders based on the preferences you set.
               </p>
               <p>
-                Whether an order requires secure login, authentication, or multiple acceptance steps, our intelligent BPO order management platform streamlines the entire process. Simply define your preferred location, fee range, property type, vendor, and other criteria, and our system automatically captures only the BPO and appraisal orders that match your requirements. We also support conditional order acceptance, giving you complete control over your workflow.
+                Whether an order involves secure login, authentication, or several acceptance steps, our smart order management platform handles it all seamlessly. Just set your preferred location, fee range, property type, vendor, and other criteria, and our system will only capture the BPO and appraisal orders that fit your needs. Conditional order acceptance is also supported, giving you full control over how your workflow runs.
               </p>
               <p>
-                Our cloud-based BPO Auto Acceptance Software operates entirely online, eliminating the need for software installation or dedicated hardware. Accessible from anywhere, our secure platform delivers continuous real-time BPO order monitoring, allowing you to stay connected and competitive without managing complex technical setups.
+                Our cloud-based software runs entirely online — no installation, no dedicated hardware required. Access it from anywhere, with continuous real-time order monitoring that keeps you competitive without any complicated technical setup.
               </p>
               <p>
-                Unlike manual order acceptance, our system works 24/7, continuously monitoring vendor portals to ensure you never miss valuable opportunities—even when you’re away from your computer. Our intelligent monitoring technology instantly identifies newly available orders, helping you increase your BPO order acceptance rate, improve productivity, and maximize your earning potential.
+                Unlike manual acceptance, our system runs 24/7, constantly checking vendor portals so you never miss an opportunity, even when you're away from your desk. Our monitoring technology spots new orders the instant they appear, helping you raise your acceptance rate, boost productivity, and increase your earnings.
               </p>
               <p>
-                To deliver fast and reliable performance, our infrastructure is hosted on secure USA-based servers, providing optimized connectivity for supported BPO and appraisal vendor portals. This strategic infrastructure helps reduce response times and ensures dependable BPO order capture for professionals across the real estate valuation industry.
+                For speed and reliability, our infrastructure runs on secure USA-based servers, giving us optimized connectivity to supported BPO and appraisal vendor portals. This setup helps minimize response times and ensures consistent order capture for professionals across the real estate valuation space.
               </p>
               <p>
-                With BPO Auto Accept, you gain more than just automation—you gain a trusted technology partner committed to helping you secure more Broker Price Opinion (BPO) and appraisal orders, streamline your operations, and grow your business with confidence.
+                With BPO Auto Accept, you're not just getting automation — you're gaining a technology partner focused on helping you win more Broker Price Opinion (BPO) and appraisal orders, simplify your operations, and grow your business with confidence.
               </p>
             </div>
             
@@ -108,8 +108,8 @@ const About = () => {
                 Our Mission
               </h3>
               <p style={{ fontSize: '0.98rem', lineHeight: 1.7, color: 'var(--text-main)' }}>
-                Our mission is to provide industry-leading BPO Auto Accept Software that automates BPO and appraisal order acceptance with speed, accuracy, and reliability. By combining intelligent automation with real-time monitoring, we help professionals increase acceptance rates, improve productivity, and grow their business through efficient BPO order management.
-              </p>
+               Our mission is to deliver best-in-class BPO Auto Accept Software that automates BPO and appraisal order acceptance with speed, precision, and reliability. By pairing smart automation with real-time monitoring, we help professionals boost acceptance rates, drive productivity, and grow their business through efficient BPO order management.
+                 </p>
             </div>
 
             <img src={office} alt="BPO office" width="600" height="400" className="reveal-img-grow" style={{ borderRadius: '12px', width: '100%', height: 'auto' }} />
@@ -132,7 +132,7 @@ const About = () => {
                 </li>
               </ul>
               <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '1.25rem', lineHeight: 1.6 }}>
-                <strong>One solution for BPO order capture:</strong> We accept BPO orders using our automation tool software to out-compete your competitors.
+                <strong> Your All-in-One BPO Capture Tool:</strong>    We use advanced automation software to secure your BPO orders and keep you ahead of the competition.
               </p>
             </div>
 
@@ -176,8 +176,12 @@ const About = () => {
               <Users size={20} style={{ color: 'var(--primary)' }} /> Who We Are
             </h3>
             <p style={{ fontSize: '0.95rem', lineHeight: 1.8, color: 'var(--text-main)' }}>
-              With years of experience in the Broker Price Opinion (BPO) and real estate valuation industry, BPO Auto Accept is committed to helping real estate professionals, appraisers, lenders, and valuation companies secure more BPO and appraisal orders through intelligent automation. Our advanced BPO Auto Accept Software combines real-time order monitoring, automated BPO order capture, and smart order management to improve acceptance rates while eliminating the need for constant manual refreshing. Our cloud-based BPO automation platform monitors vendor portals 24/7 and instantly captures eligible orders based on your customized preferences. By streamlining BPO order management with speed, precision, and reliability, we help you save time, increase productivity, and focus on delivering exceptional service to your clients. As a trusted partner in BPO Auto Acceptance, our mission is to provide secure, reliable, and high-performance automation solutions that maximize efficiency, improve workflow, and help your business grow with confidence.
-            </p>
+             Backed by years of experience in the Broker Price Opinion (BPO) and real estate valuation space, BPO Auto Accept is dedicated to helping real estate professionals, appraisers, lenders, and valuation companies win more BPO and appraisal orders through intelligent automation. Our advanced software combines real-time order monitoring, automated capture, and smart order management to boost acceptance rates and eliminate the need for constant manual refreshing.
+
+Our cloud-based platform runs 24/7, monitoring vendor portals and instantly grabbing eligible orders based on the preferences you set. By making BPO order management faster, more precise, and more reliable, we help you save time, work more productively, and focus on delivering great service to your clients.
+
+As a trusted name in BPO Auto Acceptance, our mission is simple: deliver secure, dependable, high-performance automation that maximizes efficiency, streamlines your workflow, and helps your business grow with confidence.
+              </p>
           </div>
 
           {/* What We Do */}
@@ -210,8 +214,14 @@ const About = () => {
               <Cpu size={20} style={{ color: 'var(--primary)' }} /> What We Do
             </h3>
             <p style={{ fontSize: '0.95rem', lineHeight: 1.8, color: 'var(--text-main)' }}>
-              At BPO Auto Accept, we specialize in BPO Auto Acceptance and automated BPO order management for real estate professionals, appraisers, lenders, and valuation companies. Our advanced BPO Auto Accept Software continuously monitors vendor portals and instantly captures Broker Price Opinion (BPO) and appraisal orders in real time, eliminating delays and maximizing your order acceptance rate. Simply customize your preferences—including location, order type, fee range, and vendor portals—and our intelligent BPO automation system automatically accepts only the orders that match your criteria. With 24/7 real-time monitoring, you never have to manually refresh portals or worry about missing valuable opportunities. Whether you're managing foreclosures, REO properties, short sales, loan modifications, or real estate valuations, our automated BPO order capture solution streamlines your workflow, improves efficiency, and helps you secure more assignments with speed and accuracy. Backed by years of industry expertise, we deliver secure, reliable, and cloud-based BPO automation that increases productivity, enhances order management, and gives your business a competitive advantage in the fast-paced Broker Price Opinion (BPO) industry.
-            </p>
+             BPO Auto Accept focuses on automated order acceptance and management for real estate professionals, appraisers, lenders, and valuation companies. Our software continuously scans vendor portals and instantly captures Broker Price Opinion (BPO) and appraisal orders in real time, cutting out delays and pushing your acceptance rate as high as possible.
+
+Just set your preferences — location, order type, fee range, and vendor portals — and our automation will only accept the orders that match your criteria. With round-the-clock monitoring, you'll never need to manually refresh a portal or risk missing a good opportunity.
+
+Whether you handle foreclosures, REO properties, short sales, loan modifications, or valuations, our automated capture solution simplifies your workflow, boosts efficiency, and helps you land more assignments quickly and accurately.
+
+Built on years of industry know-how, we deliver secure, dependable, cloud-based automation that increases productivity, strengthens order management, and gives your business an edge in the fast-moving BPO space.
+ </p>
           </div>
 
         </div>
@@ -229,7 +239,7 @@ const About = () => {
         <div className="glass-panel" style={{ padding: '3rem', textAlign: 'center' }}>
           <h2 style={{ fontSize: '1.75rem', marginBottom: '1rem' }}>What is BPO Auto Acceptance?</h2>
           <p style={{ color: 'var(--text-main)', maxWidth: '800px', margin: '0 auto 1.5rem', lineHeight: 1.8, fontSize: '1.02rem' }}>
-            BPO Auto Acceptance is an intelligent BPO automation solution that automatically monitors vendor portals and accepts eligible Broker Price Opinion (BPO) and appraisal orders the moment they become available. By eliminating manual refreshing and repetitive clicks, our system improves your BPO order acceptance rate, streamlines BPO order management, and helps you win more assignments through real-time order monitoring.
+            BPO Auto Acceptance is a smart automation solution that watches vendor portals around the clock and instantly accepts eligible Broker Price Opinion (BPO) and appraisal orders as soon as they're posted. By taking manual refreshing and repetitive clicking out of the equation, our system boosts your acceptance rate, simplifies order management, and helps you land more assignments through real-time monitoring.
           </p>
         </div>
       </section>
@@ -245,10 +255,10 @@ const About = () => {
             </h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               {[
-                'Continuously monitors BPO vendor portals 24/7 for new orders.',
-                'Automatically captures and accepts eligible BPO and appraisal orders in real time.',
-                'Applies your custom preferences, including location, vendor, order type, fee, and other criteria.',
-                'Reduces manual effort, improves productivity, and helps maximize your earning potential.'
+                'Monitors BPO vendor portals around the clock for new orders.',
+                'Instantly captures and accepts eligible BPO and appraisal orders as they come in.',
+                'Applies your custom criteria — location, vendor, order type, fee, and more.',
+                'Cuts down manual work, boosts productivity, and helps you earn more.'
               ].map((item, idx) => (
                 <div key={idx} style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
                   <div style={{ background: 'var(--secondary)', color: 'var(--primary)', width: '24px', height: '24px', borderRadius: '50%', display: 'flex', alignItems: 'center',justifyContent:"center", justify: 'center', fontWeight: 'bold', fontSize: '0.85rem', flexShrink: 0 }}>
@@ -267,14 +277,14 @@ const About = () => {
             </h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
               {[
-                'Capture more BPO and appraisal orders before your competitors.',
-                'Increase your order acceptance rate with intelligent, real-time automation.',
-                'Save time by eliminating manual refreshing and repetitive order monitoring.',
-                'Customize order acceptance based on preferred vendors, locations, fees, and property types.',
-                'Cloud-based platform with no software installation or maintenance required.',
-                '24/7 real-time monitoring to ensure you never miss valuable opportunities.',
-                'Secure USA-based infrastructure optimized for reliable performance with U.S. vendor portals.',
-                'Trusted BPO automation solution designed to improve workflow, productivity, and business growth.'
+                'Win more BPO and appraisal orders ahead of the competition.',
+                'Boost your acceptance rate with smart, real-time automation.',
+                'Skip the manual refreshing — save time with automated monitoring.',
+                'Tailor order acceptance by vendor, location, fee, and property type.',
+                'Fully cloud-based — nothing to install or maintain.',
+                'Round-the-clock monitoring so you never miss a valuable opportunity.',
+                'Secure, USA-based infrastructure built for reliable performance with U.S. vendor portals.',
+                'A trusted automation partner focused on better workflow, productivity, and growth.'
               ].map((item, idx) => (
                 <div key={idx} style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}>
                   <CheckCircle size={15} style={{ color: 'var(--primary)', flexShrink: 0, marginTop: '3px' }} />

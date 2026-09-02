@@ -12,6 +12,7 @@ const AdminDashboard = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('users');
   const [users, setUsers] = useState([]);
+  const [orders, setOrders] = useState([]);
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [simResult, setSimResult] = useState(null);
@@ -47,12 +48,25 @@ const AdminDashboard = () => {
     }
   };
 
+  const loadOrders = async () => {
+    setLoading(true);
+    try {
+      const res = await api.get('/api/admin/orders');
+      setOrders(res.orders || []);
+    } catch (err) {
+      showMsg('error', err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     loadUsers();
   }, []);
 
   useEffect(() => {
     if (activeTab === 'messages') loadMessages();
+    if (activeTab === 'orders') loadOrders();
   }, [activeTab]);
 
   const handleLogout = async () => {
@@ -92,6 +106,7 @@ const AdminDashboard = () => {
 
   const tabs = [
     { id: 'users', label: 'User Management', icon: <Users size={18} /> },
+    { id: 'orders', label: 'Orders', icon: <Zap size={18} /> },
     { id: 'simulate', label: 'Simulate Order', icon: <Zap size={18} /> },
     { id: 'messages', label: 'Contact Messages', icon: <MessageSquare size={18} /> },
   ];
@@ -217,6 +232,67 @@ const AdminDashboard = () => {
                       </td>
                     </tr>
                   ))}
+                </tbody>
+              </table>
+            </div>
+          </>
+        )}
+
+        {/* ORDERS TAB */}
+        {activeTab === 'orders' && (
+          <>
+            <div className="dashboard-header">
+              <div>
+                <h2 style={{ fontSize: '1.75rem', margin: 0 }}>Customer Orders</h2>
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>{orders.length} total purchase records</p>
+              </div>
+              <button onClick={loadOrders} className="btn btn-secondary" style={{ padding: '0.5rem 1rem', fontSize: '0.85rem' }}>
+                <RefreshCw size={15} /> Refresh
+              </button>
+            </div>
+
+            <div className="table-container">
+              <table className="custom-table">
+                <thead>
+                  <tr>
+                    <th>Customer</th>
+                    <th>Billing</th>
+                    <th>Order Notes</th>
+                    <th>Order ID</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {orders.map(order => (
+                    <tr key={order.id}>
+                      <td>
+                        <div style={{ fontWeight: 600, color: 'var(--text-bright)' }}>{order.customer_name || order.billing_name || 'Customer'}</div>
+                        <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{order.customer_email || order.billing_email || '—'}</div>
+                      </td>
+                      <td style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>
+                        {order.billing_phone || order.customer_phone || '—'}<br />
+                        {order.billing_city || '—'}{order.billing_postcode ? `, ${order.billing_postcode}` : ''}
+                      </td>
+                      <td style={{ fontSize: '0.82rem', color: 'var(--text-muted)', maxWidth: '220px', whiteSpace: 'pre-wrap' }}>
+                        {order.billing_notes || '—'}
+                      </td>
+                      <td style={{ fontFamily: 'var(--font-mono)', fontSize: '0.82rem', color: 'var(--primary)' }}>{order.order_external_id}</td>
+                      <td style={{ fontWeight: 600 }}>${parseFloat(order.fee || 0).toFixed(2)}</td>
+                      <td>
+                        <span className={`badge ${order.status === 'accepted' ? 'badge-success' : order.status === 'completed' ? 'badge-success' : 'badge-warning'}`} style={{ fontSize: '0.7rem' }}>
+                          {order.status}
+                        </span>
+                      </td>
+                      <td style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>{new Date(order.created_at).toLocaleString()}</td>
+                    </tr>
+                  ))}
+                  {orders.length === 0 && (
+                    <tr>
+                      <td colSpan={7} style={{ textAlign: 'center', color: 'var(--text-muted)', padding: '2rem' }}>No customer orders have been captured yet.</td>
+                    </tr>
+                  )}
                 </tbody>
               </table>
             </div>

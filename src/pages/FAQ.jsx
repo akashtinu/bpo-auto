@@ -96,7 +96,7 @@ const FAQ = () => {
       <section className="hero-section container reveal-fade" style={{ paddingBottom: '3rem' }}>
         <h1 className="hero-title reveal-fade delay-1" style={{ fontSize: '3rem' }}>Frequently asked Questions(FAQ)</h1>
         <p className="hero-subtitle reveal-fade delay-2">
-          Find answers to the most frequently asked questions about our BPO Auto Acceptance Software. Learn how our BPO Order Capture system works, pricing, supported vendor portals, setup process, security, and how our automation helps you capture more Broker Price Opinion (BPO) and appraisal orders.
+Get answers to the most common questions about our BPO Auto Acceptance Software — including how our Order Capture system works, pricing, supported vendor portals, the setup process, security, and how automation helps you land more Broker Price Opinion (BPO) and appraisal orders.
         </p>
       </section>
 
@@ -152,12 +152,12 @@ const FAQ = () => {
         <div className="glass-panel" style={{ padding: '3rem' }}>
           <h2 style={{ fontSize: '2rem', marginBottom: '1.5rem', color: 'var(--primary)' }}>Summary</h2>
           <div style={{ color: 'var(--text-muted)', lineHeight: '1.8', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <p>Our BPO automation system streamlines the way you accept and process orders. As soon as a portal broadcasts an order notification, our automation instantly picks it up from your email and processes it according to smart rules and filters, ensuring that only the orders you want are accepted.</p>
-            <p>Unlike direct portal bots, which can trigger account flags or bans, our email-based approach mimics real user behavior, keeping your accounts safe while maintaining high acceptance rates. Getting started is simple: you receive a dedicated email address, which you can use directly on your portals or forward portal emails to. From there, the system handles the rest automatically.</p>
-            <p>Orders are usually accepted within 3–8 seconds, and all accepted orders are fully processed and available within one business day. Our system supports most major BPO and INPS portals, and we can confirm compatibility if you provide your portal details.</p>
-            <p>We charge $4 per BPO order and $2 per PCR order, with an annual maintenance fee of $50 that includes unlimited portal automation. While we currently don’t offer a free trial, our transparent pricing and reliable performance deliver excellent value.</p>
-            <p>Your data is fully protected: portal credentials are never stored, and all emails are processed through encrypted channels. You can pause or cancel automation anytime through your dashboard with no hidden fees. Detailed reports show every order accepted on your behalf, and you can customize filters to ensure only the orders you want are captured. Dedicated email support (and optional chat support for premium users) is available to help you resolve any issues.</p>
-            <p>Note that you must create and manage your own accounts on each vendor or BPO portal. Our system does not create accounts for you—it automates order acceptance once your portal is connected to our email system.</p>
+            <p>Our BPO automation system makes accepting and processing orders effortless. The moment a portal sends out an order notification, our system picks it up from your inbox and runs it through smart rules and filters — so only the orders you actually want get accepted.</p>
+            <p>Unlike bots that interact directly with portals (which can trigger account flags or bans), our email-based method mimics natural user behavior, keeping your accounts safe while still delivering strong acceptance rates. Setup is easy: you'll get a dedicated email address to use on your portals or to forward portal emails to. From there, everything runs automatically.</p>
+            <p>Most orders are accepted within 3–8 seconds, and every accepted order is fully processed within one business day. Our system works with most major BPO and INPS portals — just share your portal details and we'll confirm compatibility.</p>
+            <p>Pricing is $4 per BPO order and $2 per PCR order, plus a $50 annual maintenance fee covering unlimited portal automation. We don't currently offer a free trial, but our straightforward pricing and consistent performance make it a strong value.</p>
+            <p>Your data stays protected — we never store portal credentials, and all emails are processed through encrypted channels. Pause or cancel your automation anytime from your dashboard, with no hidden fees. You'll get detailed reports on every order accepted on your behalf, and filters can be customized so only the right orders get captured. Support is available via dedicated email (and optional chat for premium users) whenever you need help.</p>
+            <p>Keep in mind, you're responsible for creating and managing your own accounts on each vendor or BPO portal. Our system doesn't set up accounts for you — it automates order acceptance once your portal is linked to our email system.</p>
           </div>
         </div>
       </section>
@@ -165,10 +165,10 @@ const FAQ = () => {
       {/* Still have questions CTA */}
       <section className="container" style={{ textAlign: 'center' }}>
         <div className="glass-panel" style={{ padding: '4rem 2rem', background: 'linear-gradient(135deg, rgba(3,76,98,0.3) 0%, rgba(6,11,19,0.9) 100%)', borderColor: 'rgba(4,146,194,0.3)' }}>
-          <h2 style={{ marginBottom: '1rem', fontSize: '2.5rem' }}>Ready to Capture More BPO Orders?</h2>
+          <h2 style={{ marginBottom: '1rem', fontSize: '2.5rem' }}>Ready to Land More BPO Orders?</h2>
           <p style={{ color: 'var(--text-muted)', marginBottom: '2rem', maxWidth: '800px', margin: '0 auto 2rem', lineHeight: '1.6' }}>
-            Start using our BPO Auto Acceptance Software today and let our intelligent automation monitor vendor portals, capture eligible Broker Price Opinion (BPO) and appraisal orders, and help you grow your business with less manual effort.
-          </p>
+            Get started with our BPO Auto Acceptance Software today, and let our smart automation monitor vendor portals, capture eligible Broker Price Opinion (BPO) and appraisal orders, and help you grow your business with far less manual work.
+                      </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
             <Link to="/contact" className="btn btn-primary" style={{ padding: '0.75rem 2rem', fontSize: '1.1rem' }}>Contact Us</Link>
           </div>
